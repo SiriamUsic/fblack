@@ -42,13 +42,6 @@ cd luarocks-3.3.0
 sudo luarocks install luarocks
 sudo luarocks install luasec
 sudo luarocks install luasocket
-apt install python3
-apt install python3-pip
-pip3 install yt-dlp
-pip3 install ffmpeg 
-apt install ffmpeg 
-apt install gnome-calculator
-pip3 install gtts
 cd ../..
 rm -rf tmp
 unzip luatele.zip
