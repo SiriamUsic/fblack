@@ -1149,7 +1149,11 @@ Welcome = Welcome:gsub('{user}',UserInfousername)
 Welcome = Welcome:gsub('{NameCh}',Get_Chat.title) 
 return send(msg_chat_id,msg_id,Welcome,"md")  
 else
-return send(msg_chat_id,msg_id,'⌔اطلق دخول ['..UserInfo.first_name..'](tg://user?id='..msg.sender.user_id..')\n⌔نورت الجروب {'..Get_Chat.title..'}',"md")  
+return send(msg_chat_id,msg_id,'⌔ منور يا ['..UserInfo.first_name..'](tg://user?id='..msg.sender.user_id..')\n⌔ نورت الجروب يقلبي المكان مكانك
+⌔ ممنوع نشر الروابط
+⌔ ممنوع الدخول لاي بنت بف 
+⌔ غير كدا كلنا اخوات واصحاب 🤸‍♂️♥
+━ اسم الجروب{'..Get_Chat.title..'}',"md")  
 end
 end
 end
@@ -10824,7 +10828,7 @@ if Redis:get(black.."kit_defullt:") == "true" then
   "نسبه الندم عندك للي وثقت فيهم ؟ ",
   "اول حرف من اسم شخص تقوله? بطل تفكر فيني ابي انام؟ ",
   "اكثر شيء تحس انه مات ف مجتمعنا؟ ",
-  "لو صار سوء فهم بينك وبين شخص هل تحب توضحه ولا تخليه كذا  لان مالك خلق توضح ؟ ",
+  "لو صار سوء فهم بينك وبين شخص هل تحب توضحه ولا تخليه كدا  لان مالك خلق توضح ؟ ",
   "كم عددكم بالبيت؟ ",
   "عادي تتزوج من برا القبيلة؟ ",
   "أجمل شي بحياتك وش هو؟ ",
@@ -11091,7 +11095,7 @@ if not msg.Supcreatorm then
 return send(msg_chat_id,msg_id,'\n*⌔ هذا الامر يخص { '..Controller_Num(44)..' }* ',"md",true)  
 end
 local list = Redis:smembers(black..'List:array')
-text = "  ⌔ قائمه الردود المتعدده \n•━━━━ black ━━━━━•\n"
+text = "  ⌔ قائمه الردود المتعدده \n•━═━═━═𝐓𝐄𝐋𝐄𝐆𝐎𝐃━═━═━•\n"
 for k,v in pairs(list) do
 text = text..""..k..">> ("..v..") » {رساله}\n"
 end
@@ -13849,10 +13853,10 @@ if Redis:get(black.."Status:Games"..msg.chat_id) then
 Random = {"🍏","🍎","🍐","🍊","🍋","🍉","🍇","🍓","🍈","🍒","🍑","🍍","🥥","🥝","🍅","🍆","🥑","🥦","🥒","🌶","🌽","🥕","🥔","🥖","🥐","🍞","🥨","🍟","🧀","🥚","🍳","🥓","🥩","🍗","🍖","🌭","🍔","🍠","🍕","🥪","🥙","☕️","🥤","🍶","🍺","🍻","🏀","⚽️","🏈","⚾️","🎾","🏐","🏉","🎱","🏓","🏸","🥅","🎰","🎮","🎳","🎯","🎲","🎻","🎸","🎺","🥁","🎹","🎼","🎧","🎤","🎬","🎨","🎭","🎪","🎟","🎫","🎗","🏵","🎖","🏆","🥌","🛷","🚗","🚌","🏎","🚓","🚑","🚚","🚛","🚜","⚔","🛡","🔮","🌡","💣","⌔","📍","📓","📗","📂","📅","📪","📫","⌔","📭","⏰","📺","🎚","☎️","📡"}
 SM = Random[math.random(#Random)]
 Redis:set(black.."Game:Smile"..msg.chat_id,SM)
-return send(msg_chat_id,msg_id,"⌔اسرع واحد يدز هاذا السمايل ? ~ {`"..SM.."`}","md",true)  
+return send(msg_chat_id,msg_id,"⌔اسرع واحد يرسل هذا السمايل ? ~ {`"..SM.."`}","md",true)  
 end
 end
-if text == "تويت" or text == "كت تويت" then
+if text == "كت" or text == "كت تويت" then
 if Redis:get(black.."Status:Games"..msg.chat_id) then
 local texting = {"اخر افلام شاهدتها", 
 "اخر افلام شاهدتها", 
@@ -14162,7 +14166,7 @@ local texting = {"اخر افلام شاهدتها",
   "نسبه الندم عندك للي وثقت فيهم ؟ ",
   "اول حرف من اسم شخص تقوله? بطل تفكر فيني ابي انام؟ ",
   "اكثر شيء تحس انه مات ف مجتمعنا؟ ",
-  "لو صار سوء فهم بينك وبين شخص هل تحب توضحه ولا تخليه كذا  لان مالك خلق توضح ؟ ",
+  "لو صار سوء فهم بينك وبين شخص هل تحب توضحه ولا تخليه كدا  لان مالك خلق توضح ؟ ",
   "كم عددكم بالبيت؟ ",
   "عادي تتزوج من برا القبيلة؟ ",
   "أجمل شي بحياتك وش هو؟ ",
@@ -14559,7 +14563,7 @@ if text == 'باي' or text == 'انا ماشي' then
 if not Redis:get(black.."rb:bna"..msg_chat_id) then
 return LuaTele.sendText(msg_chat_id,msg_id,"* *","md",true)  
 end
-return LuaTele.sendText(msg_chat_id,msg_id,'*ع فين لوين رايح وسايبنى 🥺💔*',"md",true)  
+return LuaTele.sendText(msg_chat_id,msg_id,'*ع فين رايح وسايبنى 🥺💔*',"md",true)  
 end
 if text == 'ويت' or text == 'ويت يحب' then
 if not Redis:get(black.."rb:bna"..msg_chat_id) then
@@ -14920,7 +14924,7 @@ end
 end
 
 if text == 'مضاربه' then
-LuaTele.sendText(msg.chat_id,msg.id, "استعمل الامر كذا :\n\n`مضاربه` المبلغ","md",true)
+LuaTele.sendText(msg.chat_id,msg.id, "استعمل الامر كدا :\n\n`مضاربه` المبلغ","md",true)
 end
 
 if text and text:match('^مضاربه (.*)$') then
@@ -14939,45 +14943,45 @@ local coniss = coniss:gsub('٩','9')
 local coniss = tonumber(coniss)
 if Redis:sismember(black.."booob",msg.sender.user_id) then
 if Redis:ttl(black.."iiooooo" .. msg.sender.user_id) >= 1180 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تضارب دلوقتي\n⇜ تعال بعد ( 20 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تضارب دلوقتي\n⇜ تعال بعد ( 20 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiooooo" .. msg.sender.user_id) >= 1120 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تضارب دلوقتي\n⇜ تعال بعد ( 19 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تضارب دلوقتي\n⇜ تعال بعد ( 19 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiooooo" .. msg.sender.user_id) >= 1060 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تضارب دلوقتي\n⇜ تعال بعد ( 18 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تضارب دلوقتي\n⇜ تعال بعد ( 18 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiooooo" .. msg.sender.user_id) >= 1000 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تضارب دلوقتي\n⇜ تعال بعد ( 17 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تضارب دلوقتي\n⇜ تعال بعد ( 17 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiooooo" .. msg.sender.user_id) >= 940 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تضارب دلوقتي\n⇜ تعال بعد ( 16 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تضارب دلوقتي\n⇜ تعال بعد ( 16 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiooooo" .. msg.sender.user_id) >= 880 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تضارب دلوقتي\n⇜ تعال بعد ( 15 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تضارب دلوقتي\n⇜ تعال بعد ( 15 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiooooo" .. msg.sender.user_id) >= 820 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تضارب دلوقتي\n⇜ تعال بعد ( 14 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تضارب دلوقتي\n⇜ تعال بعد ( 14 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiooooo" .. msg.sender.user_id) >= 760 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تضارب دلوقتي\n⇜ تعال بعد ( 13 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تضارب دلوقتي\n⇜ تعال بعد ( 13 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiooooo" .. msg.sender.user_id) >= 700 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تضارب دلوقتي\n⇜ تعال بعد ( 12 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تضارب دلوقتي\n⇜ تعال بعد ( 12 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiooooo" .. msg.sender.user_id) >= 640 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تضارب دلوقتي\n⇜ تعال بعد ( 11 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تضارب دلوقتي\n⇜ تعال بعد ( 11 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiooooo" .. msg.sender.user_id) >= 580 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تضارب دلوقتي\n⇜ تعال بعد ( 10 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تضارب دلوقتي\n⇜ تعال بعد ( 10 دقائق )","md",true)
 elseif Redis:ttl(black.."iiooooo" .. msg.sender.user_id) >= 540 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تضارب دلوقتي\n⇜ تعال بعد ( 9 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تضارب دلوقتي\n⇜ تعال بعد ( 9 دقائق )","md",true)
 elseif Redis:ttl(black.."iiooooo" .. msg.sender.user_id) >= 480 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تضارب دلوقتي\n⇜ تعال بعد ( 8 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تضارب دلوقتي\n⇜ تعال بعد ( 8 دقائق )","md",true)
 elseif Redis:ttl(black.."iiooooo" .. msg.sender.user_id) >= 420 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تضارب دلوقتي\n⇜ تعال بعد ( 7 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تضارب دلوقتي\n⇜ تعال بعد ( 7 دقائق )","md",true)
 elseif Redis:ttl(black.."iiooooo" .. msg.sender.user_id) >= 360 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تضارب دلوقتي\n⇜ تعال بعد ( 6 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تضارب دلوقتي\n⇜ تعال بعد ( 6 دقائق )","md",true)
 elseif Redis:ttl(black.."iiooooo" .. msg.sender.user_id) >= 300 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تضارب دلوقتي\n⇜ تعال بعد ( 5 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تضارب دلوقتي\n⇜ تعال بعد ( 5 دقائق )","md",true)
 elseif Redis:ttl(black.."iiooooo" .. msg.sender.user_id) >= 240 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تضارب دلوقتي\n⇜ تعال بعد ( 4 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تضارب دلوقتي\n⇜ تعال بعد ( 4 دقائق )","md",true)
 elseif Redis:ttl(black.."iiooooo" .. msg.sender.user_id) >= 180 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تضارب دلوقتي\n⇜ تعال بعد ( 3 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تضارب دلوقتي\n⇜ تعال بعد ( 3 دقائق )","md",true)
 elseif Redis:ttl(black.."iiooooo" .. msg.sender.user_id) >= 120 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تضارب دلوقتي\n⇜ تعال بعد ( 2 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تضارب دلوقتي\n⇜ تعال بعد ( 2 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiooooo" .. msg.sender.user_id) >= 60 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تضارب دلوقتي\n⇜ تعال بعد ( 1 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تضارب دلوقتي\n⇜ تعال بعد ( 1 دقيقة )","md",true)
 end
 ballancee = Redis:get(black.."boob"..msg.sender.user_id) or 0
 if tonumber(coniss) < 99 then
@@ -15011,7 +15015,7 @@ end
 end
 
 if text == 'استثمار' then
-LuaTele.sendText(msg.chat_id,msg.id, "استعمل الامر كذا :\n\n`استثمار` المبلغ","md",true)
+LuaTele.sendText(msg.chat_id,msg.id, "استعمل الامر كدا :\n\n`استثمار` المبلغ","md",true)
 end
 
 if text and text:match('^استثمار (.*)$') then
@@ -15030,45 +15034,45 @@ local coniss = coniss:gsub('٩','9')
 local coniss = tonumber(coniss)
 if Redis:sismember(black.."booob",msg.sender.user_id) then
 if Redis:ttl(black.."iioooo" .. msg.sender.user_id) >= 1180 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تستثمر دلوقتي\n⇜ تعال بعد ( 20 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تستثمر دلوقتي\n⇜ تعال بعد ( 20 دقيقة )","md",true)
 elseif Redis:ttl(black.."iioooo" .. msg.sender.user_id) >= 1120 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تستثمر دلوقتي\n⇜ تعال بعد ( 19 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تستثمر دلوقتي\n⇜ تعال بعد ( 19 دقيقة )","md",true)
 elseif Redis:ttl(black.."iioooo" .. msg.sender.user_id) >= 1060 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تستثمر دلوقتي\n⇜ تعال بعد ( 18 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تستثمر دلوقتي\n⇜ تعال بعد ( 18 دقيقة )","md",true)
 elseif Redis:ttl(black.."iioooo" .. msg.sender.user_id) >= 1000 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تستثمر دلوقتي\n⇜ تعال بعد ( 17 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تستثمر دلوقتي\n⇜ تعال بعد ( 17 دقيقة )","md",true)
 elseif Redis:ttl(black.."iioooo" .. msg.sender.user_id) >= 940 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تستثمر دلوقتي\n⇜ تعال بعد ( 16 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تستثمر دلوقتي\n⇜ تعال بعد ( 16 دقيقة )","md",true)
 elseif Redis:ttl(black.."iioooo" .. msg.sender.user_id) >= 880 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تستثمر دلوقتي\n⇜ تعال بعد ( 15 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تستثمر دلوقتي\n⇜ تعال بعد ( 15 دقيقة )","md",true)
 elseif Redis:ttl(black.."iioooo" .. msg.sender.user_id) >= 820 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تستثمر دلوقتي\n⇜ تعال بعد ( 14 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تستثمر دلوقتي\n⇜ تعال بعد ( 14 دقيقة )","md",true)
 elseif Redis:ttl(black.."iioooo" .. msg.sender.user_id) >= 760 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تستثمر دلوقتي\n⇜ تعال بعد ( 13 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تستثمر دلوقتي\n⇜ تعال بعد ( 13 دقيقة )","md",true)
 elseif Redis:ttl(black.."iioooo" .. msg.sender.user_id) >= 700 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تستثمر دلوقتي\n⇜ تعال بعد ( 12 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تستثمر دلوقتي\n⇜ تعال بعد ( 12 دقيقة )","md",true)
 elseif Redis:ttl(black.."iioooo" .. msg.sender.user_id) >= 640 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تستثمر دلوقتي\n⇜ تعال بعد ( 11 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تستثمر دلوقتي\n⇜ تعال بعد ( 11 دقيقة )","md",true)
 elseif Redis:ttl(black.."iioooo" .. msg.sender.user_id) >= 580 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تستثمر دلوقتي\n⇜ تعال بعد ( 10 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تستثمر دلوقتي\n⇜ تعال بعد ( 10 دقائق )","md",true)
 elseif Redis:ttl(black.."iioooo" .. msg.sender.user_id) >= 540 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تستثمر دلوقتي\n⇜ تعال بعد ( 9 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تستثمر دلوقتي\n⇜ تعال بعد ( 9 دقائق )","md",true)
 elseif Redis:ttl(black.."iioooo" .. msg.sender.user_id) >= 480 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تستثمر دلوقتي\n⇜ تعال بعد ( 8 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تستثمر دلوقتي\n⇜ تعال بعد ( 8 دقائق )","md",true)
 elseif Redis:ttl(black.."iioooo" .. msg.sender.user_id) >= 420 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تستثمر دلوقتي\n⇜ تعال بعد ( 7 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تستثمر دلوقتي\n⇜ تعال بعد ( 7 دقائق )","md",true)
 elseif Redis:ttl(black.."iioooo" .. msg.sender.user_id) >= 360 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تستثمر دلوقتي\n⇜ تعال بعد ( 6 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تستثمر دلوقتي\n⇜ تعال بعد ( 6 دقائق )","md",true)
 elseif Redis:ttl(black.."iioooo" .. msg.sender.user_id) >= 300 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تستثمر دلوقتي\n⇜ تعال بعد ( 5 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تستثمر دلوقتي\n⇜ تعال بعد ( 5 دقائق )","md",true)
 elseif Redis:ttl(black.."iioooo" .. msg.sender.user_id) >= 240 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تستثمر دلوقتي\n⇜ تعال بعد ( 4 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تستثمر دلوقتي\n⇜ تعال بعد ( 4 دقائق )","md",true)
 elseif Redis:ttl(black.."iioooo" .. msg.sender.user_id) >= 180 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تستثمر دلوقتي\n⇜ تعال بعد ( 3 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تستثمر دلوقتي\n⇜ تعال بعد ( 3 دقائق )","md",true)
 elseif Redis:ttl(black.."iioooo" .. msg.sender.user_id) >= 120 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تستثمر دلوقتي\n⇜ تعال بعد ( 2 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تستثمر دلوقتي\n⇜ تعال بعد ( 2 دقيقة )","md",true)
 elseif Redis:ttl(black.."iioooo" .. msg.sender.user_id) >= 60 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تستثمر دلوقتي\n⇜ تعال بعد ( 1 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تستثمر دلوقتي\n⇜ تعال بعد ( 1 دقيقة )","md",true)
 end
 ballancee = Redis:get(black.."boob"..msg.sender.user_id) or 0
 if tonumber(coniss) < 99 then
@@ -15089,7 +15093,7 @@ end
 end
 
 if text == 'حظ' then
-LuaTele.sendText(msg.chat_id,msg.id, "استعمل الامر كذا :\n\n`حظ` المبلغ","md",true)
+LuaTele.sendText(msg.chat_id,msg.id, "استعمل الامر كدا :\n\n`حظ` المبلغ","md",true)
 end
 
 if text and text:match('^حظ (.*)$') then
@@ -15108,45 +15112,45 @@ local coniss = coniss:gsub('٩','9')
 local coniss = tonumber(coniss)
 if Redis:sismember(black.."booob",msg.sender.user_id) then
 if Redis:ttl(black.."iiooo" .. msg.sender.user_id) >= 1180 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 20 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 20 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiooo" .. msg.sender.user_id) >= 1120 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 19 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 19 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiooo" .. msg.sender.user_id) >= 1060 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 18 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 18 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiooo" .. msg.sender.user_id) >= 1000 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 17 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 17 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiooo" .. msg.sender.user_id) >= 940 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 16 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 16 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiooo" .. msg.sender.user_id) >= 880 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 15 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 15 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiooo" .. msg.sender.user_id) >= 820 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 14 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 14 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiooo" .. msg.sender.user_id) >= 760 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 13 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 13 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiooo" .. msg.sender.user_id) >= 700 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 12 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 12 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiooo" .. msg.sender.user_id) >= 640 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 11 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 11 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiooo" .. msg.sender.user_id) >= 580 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 10 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 10 دقائق )","md",true)
 elseif Redis:ttl(black.."iiooo" .. msg.sender.user_id) >= 540 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 9 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 9 دقائق )","md",true)
 elseif Redis:ttl(black.."iiooo" .. msg.sender.user_id) >= 480 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 8 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 8 دقائق )","md",true)
 elseif Redis:ttl(black.."iiooo" .. msg.sender.user_id) >= 420 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 7 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 7 دقائق )","md",true)
 elseif Redis:ttl(black.."iiooo" .. msg.sender.user_id) >= 360 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 6 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 6 دقائق )","md",true)
 elseif Redis:ttl(black.."iiooo" .. msg.sender.user_id) >= 300 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 5 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 5 دقائق )","md",true)
 elseif Redis:ttl(black.."iiooo" .. msg.sender.user_id) >= 240 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 4 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 4 دقائق )","md",true)
 elseif Redis:ttl(black.."iiooo" .. msg.sender.user_id) >= 180 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 3 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 3 دقائق )","md",true)
 elseif Redis:ttl(black.."iiooo" .. msg.sender.user_id) >= 120 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 2 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 2 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiooo" .. msg.sender.user_id) >= 60 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 1 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تلعب لعبة الحظ دلوقتي\n⇜ تعال بعد ( 1 دقيقة )","md",true)
 end
 ballancee = Redis:get(black.."boob"..msg.sender.user_id) or 0
 if tonumber(ballancee) < tonumber(coniss) then
@@ -15171,7 +15175,7 @@ end
 end
 
 if text == 'تحويل' then
-LuaTele.sendText(msg.chat_id,msg.id, "استعمل الامر كذا :\n\n`تحويل` المبلغ","md",true)
+LuaTele.sendText(msg.chat_id,msg.id, "استعمل الامر كدا :\n\n`تحويل` المبلغ","md",true)
 end
 
 if text and text:match('^تحويل (.*)$') then
@@ -15224,7 +15228,7 @@ end
 if text == cccc then
 Redis:del(black.."trans" .. msg.chat_id .. ":" .. msg.sender.user_id) 
 Redis:del(black.."transn" .. msg.sender.user_id)
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مايمديك تحول لنفسك ","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ مينفعش تحول لنفسك ","md",true)
 end
 if Redis:get(black.."boballcc"..text) then
 local UserNamey = Redis:get(black.."transn"..msg.sender.user_id)
@@ -15436,66 +15440,69 @@ end
 end
 
 if text == 'زرف' and tonumber(msg.reply_to_message_id) == 0 then
-LuaTele.sendText(msg.chat_id,msg.id, "استعمل الامر كذا :\n\n`زرف` بالرد","md",true)
+LuaTele.sendText(msg.chat_id,msg.id, "استعمل الامر كدا :\n\n`زرف` بالرد","md",true)
 end
 
 if text == 'زرف' or text == 'زرفو' or text == 'زرفه' and tonumber(msg.reply_to_message_id) ~= 0 then
 local Remsg = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
 local UserInfo = LuaTele.getUser(Remsg.sender.user_id)
 if UserInfo and UserInfo.type and UserInfo.type.luatele == "userTypeBot" then
-LuaTele.sendText(msg.chat_id,msg.id,"\n*⇜ تلي جود معندوشا حساب بالبنك 🤣*","md",true)  
+LuaTele.sendText(msg.chat_id,msg.id,"\n*⇜ عاوز تزرف البوت يعبيط 🤣*","md",true)  
 return false
 end
 if Remsg.sender.user_id == msg.sender.user_id then
-LuaTele.sendText(msg.chat_id,msg.id,"\n*⇜ بدك تزرف نفسك 🤡*","md",true)  
+LuaTele.sendText(msg.chat_id,msg.id,"\n*⇜ عاوز تزرف نفسك 🤡*","md",true)  
 return false
 end
+if tonumber(Message_Reply.sender.user_id) == tonumber(5372193406) then
+return LuaTele.sendText(msg_chat_id,msg_id,"*🚫| حبيبي دا المبرمج صلاح مش بيتزرف هيفشخني انا وانت 🤸‍♂️😂*","md",true)  
+end
 if Redis:ttl(black.."polic" .. msg.sender.user_id) >= 280 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ انتا بالسجن 🏤 استنى ( 5 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜انت في السجن يا حرامي استني ( 5 دقائق )","md",true)
 elseif Redis:ttl(black.."polic" .. msg.sender.user_id) >= 240 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ انتا بالسجن 🏤 استنى ( 4 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜انت في السجن يا حرامي استني ( 4 دقائق )","md",true)
 elseif Redis:ttl(black.."polic" .. msg.sender.user_id) >= 180 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ انتا بالسجن 🏤 استنى ( 3 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜انت في السجن يا حرامي استني ( 3 دقائق )","md",true)
 elseif Redis:ttl(black.."polic" .. msg.sender.user_id) >= 120 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ انتا بالسجن 🏤 استنى ( 2 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜انت في السجن يا حرامي استني ( 2 دقيقة )","md",true)
 elseif Redis:ttl(black.."polic" .. msg.sender.user_id) >= 60 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ انتا بالسجن 🏤 استنى ( 1 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜انت في السجن يا حرامي استني ( 1 دقيقة )","md",true)
 end
 if Redis:ttl(black.."hrame" .. Remsg.sender.user_id) >= 880 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ ذا المسكين مزروف قبل شوي\n⇜ يمديك تزرفه بعد ( 15 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ الغلبان دا مزروف من شويه\n⇜ هينفع تزرفه كمان ( 15 دقيقة )","md",true)
 elseif Redis:ttl(black.."hrame" .. Remsg.sender.user_id) >= 820 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ ذا المسكين مزروف قبل شوي\n⇜ يمديك تزرفه بعد ( 14 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ الغلبان دا مزروف من شويه\n⇜ هينفع تزرفه كمان ( 14 دقيقة )","md",true)
 elseif Redis:ttl(black.."hrame" .. Remsg.sender.user_id) >= 760 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ ذا المسكين مزروف قبل شوي\n⇜ يمديك تزرفه بعد ( 13 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ الغلبان دا مزروف من شويه\n⇜ هينفع تزرفه كمان ( 13 دقيقة )","md",true)
 elseif Redis:ttl(black.."hrame" .. Remsg.sender.user_id) >= 700 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ ذا المسكين مزروف قبل شوي\n⇜ يمديك تزرفه بعد ( 12 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ الغلبان دا مزروف من شويه\n⇜ هينفع تزرفه كمان ( 12 دقيقة )","md",true)
 elseif Redis:ttl(black.."hrame" .. Remsg.sender.user_id) >= 640 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ ذا المسكين مزروف قبل شوي\n⇜ يمديك تزرفه بعد ( 11 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ الغلبان دا مزروف من شويه\n⇜ هينفع تزرفه كمان ( 11 دقيقة )","md",true)
 elseif Redis:ttl(black.."hrame" .. Remsg.sender.user_id) >= 580 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ ذا المسكين مزروف قبل شوي\n⇜ يمديك تزرفه بعد ( 10 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ الغلبان دا مزروف من شويه\n⇜ هينفع تزرفه كمان ( 10 دقائق )","md",true)
 elseif Redis:ttl(black.."hrame" .. Remsg.sender.user_id) >= 540 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ ذا المسكين مزروف قبل شوي\n⇜ يمديك تزرفه بعد ( 9 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ الغلبان دا مزروف من شويه\n⇜ هينفع تزرفه كمان ( 9 دقائق )","md",true)
 elseif Redis:ttl(black.."hrame" .. Remsg.sender.user_id) >= 480 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ ذا المسكين مزروف قبل شوي\n⇜ يمديك تزرفه بعد ( 8 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ الغلبان دا مزروف من شويه\n⇜ هينفع تزرفه كمان ( 8 دقائق )","md",true)
 elseif Redis:ttl(black.."hrame" .. Remsg.sender.user_id) >= 420 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ ذا المسكين مزروف قبل شوي\n⇜ يمديك تزرفه بعد ( 7 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ الغلبان دا مزروف من شويه\n⇜ هينفع تزرفه كمان ( 7 دقائق )","md",true)
 elseif Redis:ttl(black.."hrame" .. Remsg.sender.user_id) >= 360 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ ذا المسكين مزروف قبل شوي\n⇜ يمديك تزرفه بعد ( 6 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ الغلبان دا مزروف من شويه\n⇜ هينفع تزرفه كمان ( 6 دقائق )","md",true)
 elseif Redis:ttl(black.."hrame" .. Remsg.sender.user_id) >= 300 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ ذا المسكين مزروف قبل شوي\n⇜ يمديك تزرفه بعد ( 5 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ الغلبان دا مزروف من شويه\n⇜ هينفع تزرفه كمان ( 5 دقائق )","md",true)
 elseif Redis:ttl(black.."hrame" .. Remsg.sender.user_id) >= 240 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ ذا المسكين مزروف قبل شوي\n⇜ يمديك تزرفه بعد ( 4 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ الغلبان دا مزروف من شويه\n⇜ هينفع تزرفه كمان ( 4 دقائق )","md",true)
 elseif Redis:ttl(black.."hrame" .. Remsg.sender.user_id) >= 180 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ ذا المسكين مزروف قبل شوي\n⇜ يمديك تزرفه بعد ( 3 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ الغلبان دا مزروف من شويه\n⇜ هينفع تزرفه كمان ( 3 دقائق )","md",true)
 elseif Redis:ttl(black.."hrame" .. Remsg.sender.user_id) >= 120 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ ذا المسكين مزروف قبل شوي\n⇜ يمديك تزرفه بعد ( 2 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ الغلبان دا مزروف من شويه\n⇜ هينفع تزرفه كمان ( 2 دقيقة )","md",true)
 elseif Redis:ttl(black.."hrame" .. Remsg.sender.user_id) >= 60 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ ذا المسكين مزروف قبل شوي\n⇜ يمديك تزرفه بعد ( 1 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ الغلبان دا مزروف من شويه\n⇜ هينفع تزرفه كمان ( 1 دقيقة )","md",true)
 end
 if Redis:sismember(black.."booob",Remsg.sender.user_id) then
 ballanceed = Redis:get(black.."boob"..Remsg.sender.user_id) or 0
 if tonumber(ballanceed) < 199 then
-return LuaTele.sendText(msg.chat_id,msg.id, "⇜ مايمديك تزرفه فلوسه اقل من 200 جنيه 💵","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id, "⇜ مينفعش تزرفه فلوسه اقل من 200 جنيه 💵","md",true)
 end
 local hrame = math.floor(math.random() * 200) + 1;
 local hramee = math.floor(math.random() * 5) + 1;
@@ -15509,7 +15516,7 @@ Redis:sadd(black.."zrfffid",msg.sender.user_id)
 LuaTele.sendText(msg.chat_id,msg.id, "⇜ خد يا حرامي زرفته "..hrame.." جنيه 💵\n✦","md",true)
 else
 Redis:setex(black.."polic" .. msg.sender.user_id,300, true)
-LuaTele.sendText(msg.chat_id,msg.id, "⇜ مسكتك الشرطة وانتا تزرف 🚔\n✦","md",true)
+LuaTele.sendText(msg.chat_id,msg.id, "⇜ مسكتك الشرطة وانت بتسرق ربنا يفك الضيقه 😂🚔\n✦","md",true)
 end
 else
 LuaTele.sendText(msg.chat_id,msg.id, "⇜ معندوش حساب بنكي ","md",true)
@@ -15519,25 +15526,25 @@ end
 if text == 'راتب' or text == 'راتبي' then
 if Redis:sismember(black.."booob",msg.sender.user_id) then
 if Redis:ttl(black.."iiioo" .. msg.sender.user_id) >= 580 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ راتبك بينزل بعد ( 10 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ راتبك هينزل كمان ( 10 دقائق )","md",true)
 elseif Redis:ttl(black.."iiioo" .. msg.sender.user_id) >= 540 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ راتبك بينزل بعد ( 9 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ راتبك هينزل كمان ( 9 دقائق )","md",true)
 elseif Redis:ttl(black.."iiioo" .. msg.sender.user_id) >= 480 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ راتبك بينزل بعد ( 8 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ راتبك هينزل كمان ( 8 دقائق )","md",true)
 elseif Redis:ttl(black.."iiioo" .. msg.sender.user_id) >= 420 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ راتبك بينزل بعد ( 7 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ راتبك هينزل كمان ( 7 دقائق )","md",true)
 elseif Redis:ttl(black.."iiioo" .. msg.sender.user_id) >= 360 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ راتبك بينزل بعد ( 6 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ راتبك هينزل كمان ( 6 دقائق )","md",true)
 elseif Redis:ttl(black.."iiioo" .. msg.sender.user_id) >= 300 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ راتبك بينزل بعد ( 5 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ راتبك هينزل كمان ( 5 دقائق )","md",true)
 elseif Redis:ttl(black.."iiioo" .. msg.sender.user_id) >= 240 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ راتبك بينزل بعد ( 4 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ راتبك هينزل كمان ( 4 دقائق )","md",true)
 elseif Redis:ttl(black.."iiioo" .. msg.sender.user_id) >= 180 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ راتبك بينزل بعد ( 3 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ راتبك هينزل كمان ( 3 دقائق )","md",true)
 elseif Redis:ttl(black.."iiioo" .. msg.sender.user_id) >= 120 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ راتبك بينزل بعد ( 2 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ راتبك هينزل كمان ( 2 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiioo" .. msg.sender.user_id) >= 60 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ راتبك بينزل بعد ( 1 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ راتبك هينزل كمان ( 1 دقيقة )","md",true)
 end
 local Textinggt = {"كابتن كريم 🚙", "شرطي 👮🏻‍♂️", "بياع حبوب 🍻", "سواق تاكسي 🚕", "قاضي 👨🏻‍⚖️", "نوم 🛌", "مغني 🎤", "كوفيره 💆🏻‍♀️", "ربة منزل 🤷🏻‍♀️", "مربيه اطفال 💁🏻‍♀️", "كهربائي 💡", "نجار ⛏", "متذوق طعام 🍕", "فلاح 👨🏻‍🌾", "كاشير بنده 🙋🏻‍♂️", "ممرض 👨🏻‍⚕️", "مهرج 🤹‍♂️", "عامل توصيل 🚴🏻‍♂️", "عسكري 👮🏻‍♂️", "مهندس 👨🏻‍🔧", "وزير 👨??‍🦳", "محامي ⚖️", "تاجر 💵", "دكتور 👨🏻‍⚕️", "حفار قبور ⚓️", "حلاق ✂️", "إمام مسجد 📿", "صياد 🎣", "خياط 🧵", "طيار 🛩", "مودل 🕴🏻", "ملك 👑", "سباك 🔧", "موزع 🗺", "سكيورتي 👮🏻‍♂️", "معلم شاورما 🌯", "دكتور ولاده 👨🏻‍⚕️", "مذيع 🗣", "عامل مساج 💆🏻‍♂️", "ممثل 🤵🏻", "جزار 🥩", "مدير بنك 💳", "مبرمج 👨🏻‍💻", "رقاصه 💃🏻", "👩🏼‍💻 صحفي", "🥷 حرامي", "🔮 ساحر", "⚽ لاعب️", "🖼 مصور", "☎️ عامل مقسم", "📖 كاتب", "🧪 مخبري",}
 local Descriptioont = Textinggt[math.random(#Textinggt)]
@@ -15819,38 +15826,38 @@ local rand_members = math.random(#chat_Members)
 local member_id = chat_Members[rand_members].member_id.user_id
 local member_name = LuaTele.getUser(chat_Members[rand_members].member_id.user_id).first_name
 local mem_tag = "["..member_name.."](tg://user?id="..member_id..")"
-return LuaTele.sendText(msg_chat_id,msg_id,"اختارتلك زوجتك اهي  "..mem_tag.." 😹♥","md",true)
+return LuaTele.sendText(msg_chat_id,msg_id,"جيبتلك عروسه انما اي لقطه "..mem_tag.." 😹♥","md",true)
 end
 if Redis:get(black.."mshaher"..msg.chat_id) then
 if text == Redis:get(black.."mshaher"..msg.chat_id) then
 Redis:del(black.."mshaher"..msg.chat_id)
 Redis:incrby(black.."Num:Add:Games"..msg.chat_id..msg.sender.user_id, 1)  
-return LuaTele.sendText(msg_chat_id,msg_id,"\nᥫ᭡ لقد فزت في اللعبه \nᥫ᭡ العب مره اخره وارسل - بوب او مشاهير","md",true)  
+return LuaTele.sendText(msg_chat_id,msg_id,"\nᥫ᭡ لقد فزت في اللعبه \nᥫ᭡ العب مره اخرى وارسل - بوب او مشاهير","md",true)  
 end
 end 
 
 if text == 'كنز' or text == 'الكنز' then
 if Redis:sismember(black.."booob",msg.sender.user_id) then
 if Redis:ttl(black.."iiihoo" .. msg.sender.user_id) >= 5130 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ كنزك  بينزل بعد ( 10 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ كنزك هينزل كمان ( 10 دقائق )","md",true)
 elseif Redis:ttl(black.."iiihoo" .. msg.sender.user_id) >= 5100 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ كنزك  بينزل بعد ( 9 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ كنزك هينزل كمان ( 9 دقائق )","md",true)
 elseif Redis:ttl(black.."iiihoo" .. msg.sender.user_id) >= 4130 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ كنزك  بينزل بعد ( 8 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ كنزك هينزل كمان ( 8 دقائق )","md",true)
 elseif Redis:ttl(black.."iiihoo" .. msg.sender.user_id) >= 420 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ كنزك  بينزل بعد ( 7 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ كنزك هينزل كمان ( 7 دقائق )","md",true)
 elseif Redis:ttl(black.."iiihoo" .. msg.sender.user_id) >= 360 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ كنزك  بينزل بعد ( 6 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ كنزك هينزل كمان ( 6 دقائق )","md",true)
 elseif Redis:ttl(black.."iiihoo" .. msg.sender.user_id) >= 300 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ كنزك  بينزل بعد ( 5 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ كنزك هينزل كمان ( 5 دقائق )","md",true)
 elseif Redis:ttl(black.."iiihoo" .. msg.sender.user_id) >= 2100 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ كنزك  بينزل بعد ( 4 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ كنزك هينزل كمان ( 4 دقائق )","md",true)
 elseif Redis:ttl(black.."iiihoo" .. msg.sender.user_id) >= 1130 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ كنزك  بينزل بعد ( 3 دقائق )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ كنزك هينزل كمان ( 3 دقائق )","md",true)
 elseif Redis:ttl(black.."iiihoo" .. msg.sender.user_id) >= 120 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ كنزك  بينزل بعد ( 2 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ كنزك هينزل كمان ( 2 دقيقة )","md",true)
 elseif Redis:ttl(black.."iiihoo" .. msg.sender.user_id) >= 60 then
-return LuaTele.sendText(msg.chat_id,msg.id,"⇜ كنزك  بينزل بعد ( 1 دقيقة )","md",true)
+return LuaTele.sendText(msg.chat_id,msg.id,"⇜ كنزك هينزل كمان ( 1 دقيقة )","md",true)
 end
 local Textinggt = {"ذهب ✨", "فضه 💰", "ورث 💰", "ياقوت ✨", "مرجان ✨🏻‍⚖️", "سبيكة ذهب خالص 💸", "عمله نادره 🔮", "اثار ⚱️🏻‍♀️", "فلوس 💴💸🏻‍♀️", "عمله قيمه💸🏻‍♀️", "كنز مفقود💸", "مجوهرات 💰", "عمله من العصر الفرعوني 🗿", "عمله من الدوله القديمه 🗿🏻‍🌾", "عمله بيتكوين 💶🏻‍♂️", "ممرض 👨🏻‍⚕️", "عمله فضيه نادره‍♂️", "عمله ذهبيه خالصه🏻‍♂️", "كنز علي بابا المفقود 💰🏻‍♂️", "بطاقه ائتمان💰🏻‍🔧", "دولار امريكي 💸??‍🦳", "دولار كندي 💸", "ين يباني 💸", "جنيه بريطاني 💸🏻‍⚕️", "دنانير عراقيه 💸️", "ريال سعودي 💴️", "درهم اماراتي 💴", "فرنك جيبوتي 💲", "اموال مفقوده 💲", "كنز خاص 💲", "صواع ملك مفقود ⚱️🏻", "تاج خاص بملك 👑", "تاج خاص بملك 👑", "اثار تحت المنزل", "جثة فرعون قديمه🏻‍♂️", "تابوت ملك مصري ⚰️", "تاج ملكه مصريه 👑🏻‍⚕️", "مخطوطه لكنز ", "مقبره فرعونيه 💎⚱️⚰️🏻‍♂️", "تمثال رمسيس ⚰️🏻", "كنز تلي جود المفقود 💲", "كنز اطلانطس المفقود 💲", "زئبق احمر 🌡️🏻‍💻", "ياقوت ومرجان 💰🏻", "عمله من العصر الفاطمي 💶", "مخطوطة كنز 📜", "بلوره قديمه 🔮", "كنز تائه 🏛️", "عملات من العصر المملوكي 💲", "كنز نابليون 💲💲", "كنز وخلاص 😂💲💲", "ممتلكات قديمه 💸",}
 local Descriptioont = Textinggt[math.random(#Textinggt)]
@@ -16694,7 +16701,7 @@ data = {
 {text = 'نبذه🕸️', callback_data ='/zxhaut'},{text = 'ٓ♻️ حول ',  callback_data ='/lhaui'},
 },
 {
-{text = '- اضف البوت لمجموعتك ♡,', url = 't.me/'..UserBot..'?startgroup=new'}, 
+{text = 'اضف البوت لمجموعتك ➕,', url = 't.me/'..UserBot..'?startgroup=new'}, 
 },
 {
 {text = '❲ ⁨⁩𝐒𝐎𝐔𝐑𝐂𝐄 𝐓𝐄𝐋𝐄𝐆𝐎𝐃 ❳', url = 't.me/'..chsource..''}, 
@@ -16710,7 +16717,7 @@ data = {
 {text = 'نبذه🕸️', callback_data ='/zxhaut'},{text = 'ٓ♻️ حول ',  callback_data ='/lhaui'},
 },
 {
-{text = '- اضف البوت لمجموعتك ♡,', url = 't.me/'..UserBot..'?startgroup=new'}, 
+{text = 'اضف البوت لمجموعتك ➕,', url = 't.me/'..UserBot..'?startgroup=new'}, 
 },
 {
 {text = '❲ ⁨⁩𝐒𝐎𝐔𝐑𝐂𝐄 𝐓𝐄𝐋𝐄𝐆𝐎𝐃 ❳', url = 't.me/'..chsource..''}, 
