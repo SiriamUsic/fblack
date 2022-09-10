@@ -202,7 +202,7 @@ return send(msg.chat_id,msg.id,Reply_Status(Info_User,'⌔ تم الغاء حظ�
 end 
 end
 end
-if text == "⌔ الغاء الامر" then
+if text == "الغاء الامر" then
 Redis:del(black..msg.sender.user_id.."bottoken")
 Redis:del(black..msg.sender.user_id.."botuser")
 Redis:del(black..msg.sender.user_id.."make:bot")
@@ -215,7 +215,7 @@ Redis:del(black..msg.sender.user_id.."make:bot")
 reply_markup = LuaTele.replyMarkup{type = 'keyboard',resize = true,is_personal = true,
 data = {
 {
-{text = '⌔ صنع بوت',type = 'text'},{text = '⌔ حذف بوت',type = 'text'},
+{text = 'صنع بوت',type = 'text'},{text = '⌔ حذف بوت',type = 'text'},
 },
 {
 {text = '⌔ تشغيل بوت',type = 'text'},{text = '⌔ ايقاف بوت',type = 'text'},
@@ -254,7 +254,7 @@ data = {
 {text = 'اعاده التشغيل ⌔',type = 'text'},
 },
 {
-{text = '⌔ الغاء الامر',type = 'text'},
+{text = 'الغاء الامر',type = 'text'},
 },
 }
 }
@@ -434,7 +434,7 @@ return false
 end
 send(msg.chat_id,msg.id, "\n⌔ من فضلك ارسل التوكن بشكل صحيح ")
 end
-if text == "⌔ صنع بوت" then
+if text == "صنع بوت" then
 Redis:set(black..msg.sender.user_id.."make:bot","token")
 send(msg.chat_id,msg.id, "\n⌔ ارسل توكن البوت الان","md",true)  
 return false 
@@ -442,7 +442,7 @@ end
 ----------end making
 ----broadcast all
 if Redis:get(black.."all:texting") then
-if text == "الغاء" or text == '⌔ الغاء الامر' then   
+if text == "الغاء" or text == 'الغاء الامر' then   
 Redis:del(black.."all:texting")
 send(msg.chat_id,msg.id, "\n⌔ تم الغاء الاذاعه","md",true)  
 return false 
@@ -469,7 +469,7 @@ Redis:del(black.."all:texting")
 send(msg.chat_id,msg.id,"⌔ تم انتهاء الاذاعه في كل البوتات","html",true)
 end
 if Redis:get(black.."all:texting:pv") then
-if text == "الغاء" or text == '⌔ الغاء الامر' then   
+if text == "الغاء" or text == 'الغاء الامر' then   
 Redis:del(black.."all:texting:pv")
 send(msg.chat_id,msg.id, "\n⌔ تم الغاء الاذاعه","md",true)  
 return false 
@@ -656,7 +656,7 @@ send(msg.chat_id,msg.id,txx,"html",true)
 end
 -------delete 
 if text and Redis:get(black..msg.sender.user_id.."make:bot") == "del" then
-if text == "الغاء" or text == '⌔ الغاء الامر' then   
+if text == "الغاء" or text == 'الغاء الامر' then   
 Redis:del(black..msg.sender.user_id.."make:bot")
 send(msg.chat_id,msg.id, "\n⌔ تم الغاء تعيين قناه السورس","md",true)  
 return false 
@@ -712,7 +712,7 @@ end
 end
 ----end--3dd
 if text and Redis:get(black..msg.sender.user_id.."setchannel") then
-if text == "الغاء" or text == '⌔ الغاء الامر' then   
+if text == "الغاء" or text == 'الغاء الامر' then   
 Redis:del(black..msg.sender.user_id.."setchannel")
 send(msg.chat_id,msg.id, "\n⌔ تم الغاء تعيين قناه السورس","md",true)  
 return false 
@@ -792,7 +792,7 @@ end
 
 --brodcast
 if Redis:get(black..msg.sender.user_id.."brodcast") then 
-if text == "الغاء" or text == '⌔ الغاء الامر' then   
+if text == "الغاء" or text == 'الغاء الامر' then   
 Redis:del(black..msg.sender.user_id.."brodcast") 
 send(msg.chat_id,msg.id, "\n⌔ تم الغاء الاذاعه","md",true)  
 return false 
@@ -853,7 +853,7 @@ return false
 end
 ---fwd
 if Redis:get(black..msg.sender.user_id.."brodcast:fwd") then 
-if text == "الغاء" or text == '⌔ الغاء الامر' then   
+if text == "الغاء" or text == 'الغاء الامر' then   
 Redis:del(black..msg.sender.user_id.."brodcast:fwd")
 send(msg.chat_id,msg.id, "\n⌔ تم الغاء الاذاعه بالتوجيه","md",true)    
 return false 
@@ -907,22 +907,22 @@ end
 reply_markup = LuaTele.replyMarkup{type = 'keyboard',resize = true,is_personal = true,
 data = {
 {
-{text = '⌔ صنع بوت',type = 'text'},{text = '⌔ حذف البوت',type = 'text'},
+{text = 'صنع بوت',type = 'text'},{text = 'حذف البوت',type = 'text'},
 },
 {
 {text = 'مبرمج السورس',type = 'text'},{text = 'سورس',type = 'text'},
 },
 {
-{text = '⌔ الغاء',type = 'text'},
+{text = 'الغاء',type = 'text'},
 },
 }
 }
-send(msg.chat_id,msg.id,"⌔ مرحبا عزيزي في مصنع الحمايه المجاني لسورس بلاك \n⌔ مبرمج السورس @BK_ZT","html",true, false, false, true, reply_markup)
+send(msg.chat_id,msg.id,"⌔ مرحبا عزيزي في مصنع الحمايه المجاني لسورس تلي جود \n⌔ مبرمج السورس @BK_ZT","html",true, false, false, true, reply_markup)
 return false 
 end
 ---making user
 if text and Redis:get(black..msg.sender.user_id.."make:bot") then
-if text == "⌔ الغاء" then
+if text == "الغاء" then
 Redis:del(black..msg.sender.user_id.."make:bot")
 send(msg.chat_id,msg.id,"⌔ تم الغاء امر صناعه البوت")
 return false 
@@ -966,7 +966,7 @@ return false
 end
 send(msg.chat_id,msg.id,"⌔ التوكن غير صحيح تأكد منه")
 end
-if text == "⌔ صنع بوت" then
+if text == "صنع بوت" then
 if Redis:get(black..msg.sender.user_id.."my:bot") then
 return send(msg.chat_id,msg.id,"⌔ عفوا لديك بوت بالفعل احذفه اولا")
 end
@@ -975,7 +975,7 @@ send(msg.chat_id,msg.id,"⌔ ارسل توكن بوتك الان")
 return false 
 end
 ----end making user
-if text == "⌔ حذف البوت" then
+if text == "حذف البوت" then
 if Redis:get(black..msg.sender.user_id.."my:bot") then
 local botuser = Redis:get(black..msg.sender.user_id.."my:bot")
 os.execute("sudo rm -fr @"..botuser)
@@ -1001,11 +1001,11 @@ Bio = ''
 end
 local photo = LuaTele.getUserProfilePhotos(UserId_Info.id)
 if photo.total_count > 0 then
-local TestText = "❲ ⁨⁩𝐒𝐀𝐋𝐀𝐇 𝐇𝐄𝐌𝐃𝐀𝐍 ❳\n— — — — — — — — —\n ⌔*َdev name⌔* :  ["..UserInfo.first_name.."](tg://user?id="..UserId_Info.id..")\n⌔*َbio* : [❲ "..Bio.." ❳]"
+local TestText = "[❲ ⁨⁩𝐒𝐀𝐋𝐀𝐇 𝐇𝐄𝐌𝐃𝐀𝐍 ❳]\n— — — — — — — — —\n ⌔*َdev name➢* :  ["..UserInfo.first_name.."](tg://user?id="..UserId_Info.id..")\n⌔*َbio* : [❲ "..Bio.." ❳]"
 keyboardd = {} 
 keyboardd.inline_keyboard = {
 {
-{text = '❲ ⁨⁩𝐒𝐀𝐋𝐀𝐇 𝐇𝐄𝐌𝐃𝐀𝐍 ❳', url = "https://t.me/BK_ZT"}
+{text = '[❲ ⁨⁩𝐒𝐀𝐋𝐀𝐇 𝐇𝐄𝐌𝐃𝐀𝐍 ❳]', url = "https://t.me/BK_ZT"}
 },
 }
 local msg_id = msg.id/2097152/0.5 
@@ -1028,9 +1028,9 @@ end
 end
 
 if text == 'السورس' or text == 'سورس' or text == 'يا سورس' or text == 'source' then
-photo = "https://t.me/photojack14366/58"
+photo = "https://t.me/sertonge/2"
 local T =[[
-WelCome To SouRce TeleGod 
+The besT sourCe on TeLeGrAm
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {

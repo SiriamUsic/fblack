@@ -1,7 +1,7 @@
 #!/bin/bash
 cd $(cd $(dirname $0); pwd)
 echo -e '\e[1m\e[31m
-يتم تنصيب سورس بلاك الان, 
+يتم تنصيب سورس تلي جود الان, 
 برجاء الانتظار حتي يتم انتهاء التنصيب
 \033[0m'
 echo -e '\033[0;33m
@@ -13,7 +13,7 @@ or اذا سبق ونصبت السورس ارسل رقم » {2}
 read Install
 case $Install in
 1)
-echo -e '\033[0;33mيتم تنصيب مكاتب سورس بلاك الان'
+echo -e '\033[0;33mيتم تنصيب مكاتب سورس تلي جود الان'
 sleep 2
 sudo apt update
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
