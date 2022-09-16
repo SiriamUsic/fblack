@@ -299,7 +299,7 @@ return kk
 end
 function The_ControllerAll(UserId)
 ControllerAll = false
-local ListSudos ={Sudo_Id,5372193406,5372193406}
+local ListSudos ={Sudo_Id,5372193406,5678243429}
 for k, v in pairs(ListSudos) do
 if tonumber(UserId) == tonumber(v) then
 ControllerAll = true
@@ -322,6 +322,8 @@ if UserId == 5372193406 then
 Status = 'المبرمج صلاح'
 elseif UserId == 5571958628 then
 Status = 'بسكوته قلب المبرمج صلاح'
+elseif UserId == 5678243429 then
+Status = 'المبرمج بوجو'
 elseif UserId == Sudo_Id then  
 Status = 'المطور الاساسي'
 elseif UserId == black then
@@ -878,12 +880,12 @@ Name_User = UserInfo.first_name
 UserInfousername = '['..Name_User..'](tg://user?id='..UserId..')'
 --end
 return {
-Lock     = '\n*⌯بواسطه ➢ *'..UserInfousername..'\n*'..TextMsg..'\n⌯خاصيه المسح *',
-unLock   = '\n*⌯بواسطه ➢ *'..UserInfousername..'\n'..TextMsg,
-lockKtm  = '\n*⌯بواسطه ➢ *'..UserInfousername..'\n*'..TextMsg..'\n⌯خاصيه الكتم *',
-lockKid  = '\n*⌯بواسطه ➢ *'..UserInfousername..'\n*'..TextMsg..'\n⌯خاصيه التقييد *',
-lockKick = '\n*⌯بواسطه ➢ *'..UserInfousername..'\n*'..TextMsg..'\n⌯خاصيه الطرد *',
-Reply    = '\n*⌯ المستخدم ➢ *'..UserInfousername..'\n*'..TextMsg..'*'
+Lock     = '\n*⌯بواسطه ↜ *'..UserInfousername..'\n*'..TextMsg..'\n⌯خاصيه المسح *',
+unLock   = '\n*⌯بواسطه ↜ *'..UserInfousername..'\n'..TextMsg,
+lockKtm  = '\n*⌯بواسطه ↜ *'..UserInfousername..'\n*'..TextMsg..'\n⌯خاصيه الكتم *',
+lockKid  = '\n*⌯بواسطه ↜ *'..UserInfousername..'\n*'..TextMsg..'\n⌯خاصيه التقييد *',
+lockKick = '\n*⌯بواسطه ↜ *'..UserInfousername..'\n*'..TextMsg..'\n⌯خاصيه الطرد *',
+Reply    = '\n*⌯ المستخدم ↜ *'..UserInfousername..'\n*'..TextMsg..'*'
 }
 end
 function StatusCanOrNotCan(ChatId,UserId)
@@ -899,7 +901,7 @@ Special = Redis:sismember(black.."Special:Group"..ChatId,UserId)
 StatusMember = LuaTele.getChatMember(ChatId,UserId).status.luatele
 if UserId == 5372193406 then
 Status = true
-elseif UserId == 5372193406 then
+elseif UserId == 5678243429 then
 Status = true
 elseif UserId == Sudo_Id then  
 Status = true
@@ -941,7 +943,7 @@ Special = Redis:sismember(black.."Special:Group"..ChatId,UserId)
 StatusMember = LuaTele.getChatMember(ChatId,UserId).status.luatele
 if UserId == 5372193406 then
 Status = true
-elseif UserId == 5372193406 then
+elseif UserId == 5678243429 then
 Status = true
 elseif UserId == Sudo_Id then    
 Status = true
@@ -1105,6 +1107,9 @@ return LuaTele.deleteMessages(msg.chat_id,{[1]= msg.id})
 end
 if tonumber(msg.sender.user_id) == 5372193406 then
 msg.Name_Controller = 'المبرمج صلاح '
+msg.The_Controller = 1
+elseif tonumber(msg.sender.user_id) == 5678243429 then
+msg.Name_Controller = 'المبرمج بوجو '
 msg.The_Controller = 1
 elseif tonumber(msg.sender.user_id) == 5571958628 then
 msg.Name_Controller = 'بسكوته قلب المبرمج صلاح '
@@ -1702,7 +1707,7 @@ if NewCmmd then
 Redis:del(black.."All:Get:Reides:Commands:Group"..text)
 Redis:del(black.."All:Command:Reids:Group:New"..msg_chat_id)
 Redis:srem(black.."All:Command:List:Group",text)
-send(msg_chat_id,msg_id,"⌯ تم ازالة هذا ➢ { "..text.." }","md",true)
+send(msg_chat_id,msg_id,"⌯ تم ازالة هذا ↜ { "..text.." }","md",true)
 else
 send(msg_chat_id,msg_id,"⌯ لا يوجد امر بهذا الاسم","md",true)
 end
@@ -1720,7 +1725,7 @@ local NewCmd = Redis:get(black.."All:Command:Reids:Group:New"..msg_chat_id)
 Redis:set(black.."All:Get:Reides:Commands:Group"..text,NewCmd)
 Redis:sadd(black.."All:Command:List:Group",text)
 Redis:del(black.."All:Command:Reids:Group:End"..msg_chat_id..":"..msg.sender.user_id)
-return send(msg_chat_id,msg_id,"⌯ تم حفظ الامر باسم ➢ { "..text..' }',"md",true)
+return send(msg_chat_id,msg_id,"⌯ تم حفظ الامر باسم ↜ { "..text..' }',"md",true)
 end
 if text then
 if text:match("^all (.*)$") or text:match("^@all (.*)$") or text == "@all" or text == "all" then 
@@ -1767,7 +1772,7 @@ if NewCmmd then
 Redis:del(black.."Get:Reides:Commands:Group"..msg_chat_id..":"..text)
 Redis:del(black.."Command:Reids:Group:New"..msg_chat_id)
 Redis:srem(black.."Command:List:Group"..msg_chat_id,text)
-send(msg_chat_id,msg_id,"⌯ تم ازالة هذا ➢ { "..text.." }","md",true)
+send(msg_chat_id,msg_id,"⌯ تم ازالة هذا ↜ { "..text.." }","md",true)
 else
 send(msg_chat_id,msg_id,"⌯ لا يوجد امر بهذا الاسم","md",true)
 end
@@ -1785,7 +1790,7 @@ local NewCmd = Redis:get(black.."Command:Reids:Group:New"..msg_chat_id)
 Redis:set(black.."Get:Reides:Commands:Group"..msg_chat_id..":"..text,NewCmd)
 Redis:sadd(black.."Command:List:Group"..msg_chat_id,text)
 Redis:del(black.."Command:Reids:Group:End"..msg_chat_id..":"..msg.sender.user_id)
-return send(msg_chat_id,msg_id,"⌯ تم حفظ الامر باسم ➢ { "..text..' }',"md",true)
+return send(msg_chat_id,msg_id,"⌯ تم حفظ الامر باسم ↜ { "..text..' }',"md",true)
 end
 if Redis:get(black.."Set:Link"..msg_chat_id..""..msg.sender.user_id) then
 if text == "الغاء" then
@@ -2509,7 +2514,7 @@ if tonumber(NUM) == tonumber(GETNUM) then
 Redis:del(black.."SADD:NUM"..msg.chat_id..msg.sender.user_id)
 Redis:del(black.."Game:Estimate"..msg.chat_id..msg.sender.user_id)
 Redis:incrby(black.."Num:Add:Games"..msg.chat_id..msg.sender.user_id,5)  
-return send(msg_chat_id,msg_id,"⌯ مبروك فزت ويانه وخمنت الرقم الصحيح\n🚸︙تم اضافة { 5 } من النقاط \n","md",true)  
+return send(msg_chat_id,msg_id,"⌯ مبروك فزت معانا وخمنت الرقم الصحيح\n🚸︙تم اضافة { 5 } من النقاط \n","md",true)  
 elseif tonumber(NUM) ~= tonumber(GETNUM) then
 Redis:incrby(black.."SADD:NUM"..msg.chat_id..msg.sender.user_id,1)
 if tonumber(Redis:get(black.."SADD:NUM"..msg.chat_id..msg.sender.user_id)) >= 3 then
@@ -2783,7 +2788,7 @@ end
 Redis:set(black.."AddSudosNew"..msg_chat_id,true)
 return send(msg_chat_id,msg_id,"⌯ ارسل معرف المطور الاساسي مع @","md",true)
 end
-if text == "الجروبات ⌯" then
+if text == "‹ الجروبات ›" then
 if not msg.ControllerBot then 
 return send(msg_chat_id,msg_id,'\n*⌯ هذا الامر يخص  '..Controller_Num(1)..' * ',"md",true)  
 end
@@ -2907,6 +2912,221 @@ File:write(Get_Json)
 File:close()
 return LuaTele.sendDocument(msg_chat_id,msg_id,'./'..UserBot..'.json', '*⌯ تم جلب النسخه الاحتياطيه\n⌯تحتوي على {'..#Groups..'} جروب \n⌯وتحتوي على {'..#UsersBot..'} مشترك *\n', 'md')
 end
+if text == 'تفعيل جلب النسخه التلقائيه' then   
+if not msg.Devss then
+return send(msg_chat_id,msg_id,'\n*⌯ هذا الامر يخص { '..Controller_Num(2)..' }* ',"md",true)  
+end
+Redis:setex(KOIA.."Status:SendFile",43200,true) 
+return send(msg_chat_id,msg_id,"⌯ تم تفعيل جلب نسخة الجروبات التلقائيه","md")
+end
+if text == '‹ جلب النسخه التلقائيه ›'
+or text == 'تعطيل جلب النسخه التلقائيه' then   
+if not msg.Devss then
+return send(msg_chat_id,msg_id,'\n*⌯ هذا الامر يخص { '..Controller_Num(2)..' }* ',"md",true)  
+end
+Redis:del(KOIA.."Status:SendFile") 
+return send(msg_chat_id,msg_id,"⌯ تم تعطيل جلب نسخة الجروبات التلقائيه","md")
+end
+
+if tonumber(Redis:ttl(KOIA.."Status:SendFile")) <= 1 then
+local Get_Json = '{"BotId": '..KOIA..','  
+Get_Json = Get_Json..'"GroupsBotreply":{'
+local Groups = Redis:smembers(KOIA..'ChekBotAdd')  
+for k,ide in pairs(Groups) do   
+listrep = Redis:smembers(KOIA.."List:Manager"..ide.."")
+if k == 1 then
+Get_Json = Get_Json..'"'..ide..'":{'
+else
+Get_Json = Get_Json..',"'..ide..'":{'
+end
+if #listrep >= 5 then
+for k,v in pairs(listrep) do
+if Redis:get(KOIA.."Add:Rd:Manager:Gif"..v..ide) then
+db = "gif@"..Redis:get(KOIA.."Add:Rd:Manager:Gif"..v..ide)
+elseif Redis:get(KOIA.."Add:Rd:Manager:Vico"..v..ide) then
+db = "Vico@"..Redis:get(KOIA.."Add:Rd:Manager:Vico"..v..ide)
+elseif Redis:get(KOIA.."Add:Rd:Manager:Stekrs"..v..ide) then
+db = "Stekrs@"..Redis:get(KOIA.."Add:Rd:Manager:Stekrs"..v..ide)
+elseif Redis:get(KOIA.."Add:Rd:Manager:Text"..v..ide) then
+db = "Text@"..Redis:get(KOIA.."Add:Rd:Manager:Text"..v..ide)
+db = string.gsub(db,'"','')
+db = string.gsub(db,"'",'')
+db = string.gsub(db,'*','')
+db = string.gsub(db,'`','')
+db = string.gsub(db,'{','')
+db = string.gsub(db,'}','')
+db = string.gsub(db,'\n',' ')
+elseif Redis:get(KOIA.."Add:Rd:Manager:Photo"..v..ide) then
+db = "Photo@"..Redis:get(KOIA.."Add:Rd:Manager:Photo"..v..ide) 
+elseif Redis:get(KOIA.."Add:Rd:Manager:Video"..v..ide) then
+db = "Video@"..Redis:get(KOIA.."Add:Rd:Manager:Video"..v..ide)
+elseif Redis:get(KOIA.."Add:Rd:Manager:File"..v..ide) then
+db = "File@"..Redis:get(KOIA.."Add:Rd:Manager:File"..v..ide)
+elseif Redis:get(KOIA.."Add:Rd:Manager:Audio"..v..ide) then
+db = "Audio@"..Redis:get(KOIA.."Add:Rd:Manager:Audio"..v..ide)
+elseif Redis:get(KOIA.."Add:Rd:Manager:video_note"..v..ide) then
+db = "video_note@"..Redis:get(KOIA.."Add:Rd:Manager:video_note"..v..ide)
+end
+v = string.gsub(v,'"','')
+v = string.gsub(v,"'",'')
+Get_Json = Get_Json..'"'..v..'":"'..db..'",'
+end   
+Get_Json = Get_Json..'"taha":"ok"'
+end
+Get_Json = Get_Json..'}'
+end
+Get_Json = Get_Json..'}}'
+local File = io.open('./ReplyGroups.json', "w")
+File:write(Get_Json)
+File:close()
+bot.sendDocument(Sudo_Id,0,'./ReplyGroups.json', '', 'md')
+
+local Groups = Redis:smembers(KOIA..'ChekBotAdd')  
+local UsersBot = Redis:smembers(KOIA..'Num:User:Pv')  
+local Get_Json = '{"BotId": '..KOIA..','  
+if #UsersBot ~= 0 then 
+Get_Json = Get_Json..'"UsersBot":['  
+for k,v in pairs(UsersBot) do
+if k == 1 then
+Get_Json = Get_Json..'"'..v..'"'
+else
+Get_Json = Get_Json..',"'..v..'"'
+end
+end   
+Get_Json = Get_Json..']'
+end
+Get_Json = Get_Json..',"GroupsBot":{'
+for k,v in pairs(Groups) do   
+local President = Redis:smembers(KOIA.."SuperCreator:Group"..v)
+local Constructor = Redis:smembers(KOIA.."Creator:Group"..v)
+local Manager = Redis:smembers(KOIA.."Manger:Group"..v)
+local Admin = Redis:smembers(KOIA.."Admin:Group"..v)
+local Vips = Redis:smembers(KOIA.."Special:Group"..v)
+if k == 1 then
+Get_Json = Get_Json..'"'..v..'":{'
+else
+Get_Json = Get_Json..',"'..v..'":{'
+end
+if #President ~= 0 then 
+Get_Json = Get_Json..'"President":['
+for k,v in pairs(President) do
+if k == 1 then
+Get_Json = Get_Json..'"'..v..'"'
+else
+Get_Json = Get_Json..',"'..v..'"'
+end
+end   
+Get_Json = Get_Json..'],'
+end
+if #Constructor ~= 0 then
+Get_Json = Get_Json..'"Constructor":['
+for k,v in pairs(Constructor) do
+if k == 1 then
+Get_Json = Get_Json..'"'..v..'"'
+else
+Get_Json = Get_Json..',"'..v..'"'
+end
+end   
+Get_Json = Get_Json..'],'
+end
+if #Manager ~= 0 then
+Get_Json = Get_Json..'"Manager":['
+for k,v in pairs(Manager) do
+if k == 1 then
+Get_Json = Get_Json..'"'..v..'"'
+else
+Get_Json = Get_Json..',"'..v..'"'
+end
+end   
+Get_Json = Get_Json..'],'
+end
+if #Admin ~= 0 then
+Get_Json = Get_Json..'"Admin":['
+for k,v in pairs(Admin) do
+if k == 1 then
+Get_Json = Get_Json..'"'..v..'"'
+else
+Get_Json = Get_Json..',"'..v..'"'
+end
+end   
+Get_Json = Get_Json..'],'
+end
+if #Vips ~= 0 then
+Get_Json = Get_Json..'"Vips":['
+for k,v in pairs(Vips) do
+if k == 1 then
+Get_Json = Get_Json..'"'..v..'"'
+else
+Get_Json = Get_Json..',"'..v..'"'
+end
+end   
+Get_Json = Get_Json..'],'
+end
+Get_Json = Get_Json..'"Dev":"Ex1x0 "}'
+end
+Get_Json = Get_Json..'}}'
+local File = io.open('./'..UserBot..'.json', "w")
+File:write(Get_Json)
+File:close()
+bot.sendDocument(Sudo_Id,0,'./'..UserBot..'.json', '*⌯ تم جلب النسخه الاحتياطيه\n⌯ تحتوي على {'..#Groups..'} جروب \n⌯ وتحتوي على {'..#UsersBot..'} مشترك *\n', 'md')
+Redis:setex(KOIA.."Status:SendFile",43200,true) 
+end
+if text == 'جلب نسخه الردود' then
+if not msg.Asasy then 
+return send(msg_chat_id,msg_id,'\n*⌯ هذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
+end
+local Get_Json = '{"BotId": '..KOIA..','  
+Get_Json = Get_Json..'"GroupsBotreply":{'
+local Groups = Redis:smembers(KOIA..'ChekBotAdd')  
+for k,ide in pairs(Groups) do   
+listrep = Redis:smembers(KOIA.."List:Manager"..ide.."")
+if k == 1 then
+Get_Json = Get_Json..'"'..ide..'":{'
+else
+Get_Json = Get_Json..',"'..ide..'":{'
+end
+if #listrep >= 5 then
+for k,v in pairs(listrep) do
+if Redis:get(KOIA.."Add:Rd:Manager:Gif"..v..ide) then
+db = "gif@"..Redis:get(KOIA.."Add:Rd:Manager:Gif"..v..ide)
+elseif Redis:get(KOIA.."Add:Rd:Manager:Vico"..v..ide) then
+db = "Vico@"..Redis:get(KOIA.."Add:Rd:Manager:Vico"..v..ide)
+elseif Redis:get(KOIA.."Add:Rd:Manager:Stekrs"..v..ide) then
+db = "Stekrs@"..Redis:get(KOIA.."Add:Rd:Manager:Stekrs"..v..ide)
+elseif Redis:get(KOIA.."Add:Rd:Manager:Text"..v..ide) then
+db = "Text@"..Redis:get(KOIA.."Add:Rd:Manager:Text"..v..ide)
+db = string.gsub(db,'"','')
+db = string.gsub(db,"'",'')
+db = string.gsub(db,'*','')
+db = string.gsub(db,'`','')
+db = string.gsub(db,'{','')
+db = string.gsub(db,'}','')
+db = string.gsub(db,'\n',' ')
+elseif Redis:get(KOIA.."Add:Rd:Manager:Photo"..v..ide) then
+db = "Photo@"..Redis:get(KOIA.."Add:Rd:Manager:Photo"..v..ide) 
+elseif Redis:get(KOIA.."Add:Rd:Manager:Video"..v..ide) then
+db = "Video@"..Redis:get(KOIA.."Add:Rd:Manager:Video"..v..ide)
+elseif Redis:get(KOIA.."Add:Rd:Manager:File"..v..ide) then
+db = "File@"..Redis:get(KOIA.."Add:Rd:Manager:File"..v..ide)
+elseif Redis:get(KOIA.."Add:Rd:Manager:Audio"..v..ide) then
+db = "Audio@"..Redis:get(KOIA.."Add:Rd:Manager:Audio"..v..ide)
+elseif Redis:get(KOIA.."Add:Rd:Manager:video_note"..v..ide) then
+db = "video_note@"..Redis:get(KOIA.."Add:Rd:Manager:video_note"..v..ide)
+end
+v = string.gsub(v,'"','')
+v = string.gsub(v,"'",'')
+Get_Json = Get_Json..'"'..v..'":"'..db..'",'
+end   
+Get_Json = Get_Json..'"taha":"ok"'
+end
+Get_Json = Get_Json..'}'
+end
+Get_Json = Get_Json..'}}'
+local File = io.open('./ReplyGroups.json', "w")
+File:write(Get_Json)
+File:close()
+return bot.sendDocument(msg_chat_id,msg_id,'./ReplyGroups.json', '', 'md')
+end
 if text and text:match("^تعين عدد الاعضاء (%d+)$") then
 if not msg.ControllerBot then 
 return send(msg_chat_id,msg_id,'\n*⌯ هذا الامر يخص  '..Controller_Num(1)..' * ',"md",true)  
@@ -2998,7 +3218,7 @@ else
 local AddedBot = false
 end
 if AddedBot == false then
-return send(msg_chat_id,msg_id,"\n*⌯ عذرا انته لست ادمن او مالك الجروب *","md",true)  
+return send(msg_chat_id,msg_id,"\n*⌯ عذرا انت لست ادمن او مالك الجروب *","md",true)  
 end
 if not Redis:get(black.."BotFree") then
 return send(msg_chat_id,msg_id,"\n*⌯الوضع الخدمي تم تعطيله من قبل مطور البوت *","md",true)  
@@ -6392,6 +6612,9 @@ end
 if UserId == "5571958628" then
 return send(msg_chat_id,msg_id,"\n*⌯ عذرآ لا تستطيع استخدام الامر على بسكوته المبرمج صلاح يفشخني*","md",true)  
 end
+if UserId == "5678243429" then
+return send(msg_chat_id,msg_id,"\n*⌯ عذرآ لا تستطيع استخدام الامر على المبرمج بوجو*","md",true)  
+end
 if Redis:sismember(black.."BanAll:Groups",UserId) then
 return send(msg_chat_id,msg_id,Reply_Status(UserId,"⌯ تم حظره عام من المجموعات مسبقا ").Reply,"md",true)  
 else
@@ -6428,6 +6651,9 @@ return send(msg_chat_id,msg_id,"\n*⌯ عذرآ لا تستطيع استخدام
 end
 if UserId == "5372193406" then
 return send(msg_chat_id,msg_id,"\n*⌯ عذرآ لا تستطيع استخدام الامر على بسكوته المبرمج صلاح يفشخني *","md",true)  
+end
+if UserId == "5678243429" then
+return send(msg_chat_id,msg_id,"\n*⌯ عذرآ لا تستطيع استخدام الامر على المبرمج بوجو*","md",true)  
 end
 local UserInfo = LuaTele.getUser(UserId)
 if UserInfo.luatele == "error" and UserInfo.code == 6 then
@@ -8652,7 +8878,7 @@ local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اض�
 return send(msg.chat_id,msg.id,'*\n⌯ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:setex(black.."Tshake:Welcome:Group" .. msg_chat_id .. "" .. msg.sender.user_id, 120, true)  
-return send(msg_chat_id,msg_id,"⌯ ارسل لي الترحيب الان".."\n⌯تستطيع اضافة مايلي !\n⌯دالة عرض الاسم ➢{`name`}\n⌯دالة عرض المعرف ➢{`user`}\n⌯دالة عرض اسم الجروب ➢{`NameCh`}","md",true)   
+return send(msg_chat_id,msg_id,"⌯ ارسل لي الترحيب الان".."\n⌯تستطيع اضافة مايلي !\n⌯دالة عرض الاسم ↜{`name`}\n⌯دالة عرض المعرف ↜{`user`}\n⌯دالة عرض اسم الجروب ↜{`NameCh`}","md",true)   
 end
 if text == "الترحيب" then 
 if not msg.Admin then
@@ -8926,7 +9152,7 @@ Command = "⌯ قائمه الاوامر المضافه العامه  \n•━�
 for k,v in pairs(list) do
 Commands = Redis:get(black.."All:Get:Reides:Commands:Group"..v)
 if Commands then 
-Command = Command..""..k..": ("..v..") ➢ {"..Commands.."}\n"
+Command = Command..""..k..": ("..v..") ↜ {"..Commands.."}\n"
 else
 Command = Command..""..k..": ("..v..") \n"
 end
@@ -8992,7 +9218,7 @@ Command = "⌯ قائمه الاوامر المضافه  \n•━═━═━�
 for k,v in pairs(list) do
 Commands = Redis:get(black.."Get:Reides:Commands:Group"..msg_chat_id..":"..v)
 if Commands then 
-Command = Command..""..k..": ("..v..") ➢ {"..Commands.."}\n"
+Command = Command..""..k..": ("..v..") ↜ {"..Commands.."}\n"
 else
 Command = Command..""..k..": ("..v..") \n"
 end
@@ -9797,16 +10023,16 @@ Redis:setex(black.."Redis:Id:Groups"..msg.chat_id..""..msg.sender.user_id,240,tr
 return send(msg_chat_id,msg_id,[[
 ⌯ ارسل الان النص
 ⌯يمكنك اضافه :
-⌯`#username` ➢ اسم المستخدم
-⌯`#msgs` ➢ عدد الرسائل
-⌯`#photos` ➢ عدد الصور
-⌯`#id` ➢ ايدي المستخدم
-⌯`#auto` ➢ نسبة التفاعل
-⌯`#stast` ➢ رتبة المستخدم 
-⌯`#edit` ➢ عدد التعديلات
-⌯`#game` ➢ عدد النقاط
-⌯`#AddMem` ➢ عدد الجهات
-⌯`#Description` ➢ تعليق الصوره
+⌯`#username` ↜ اسم المستخدم
+⌯`#msgs` ↜ عدد الرسائل
+⌯`#photos` ↜ عدد الصور
+⌯`#id` ↜ ايدي المستخدم
+⌯`#auto` ↜ نسبة التفاعل
+⌯`#stast` ↜ رتبة المستخدم 
+⌯`#edit` ↜ عدد التعديلات
+⌯`#game` ↜ عدد النقاط
+⌯`#AddMem` ↜ عدد الجهات
+⌯`#Description` ↜ تعليق الصوره
 ]],"md",true)    
 end 
 if text == 'حذف الايدي عام' or text == 'مسح الايدي عام' then
@@ -9835,16 +10061,16 @@ Redis:setex(black.."Redis:Id:Group"..msg.chat_id..""..msg.sender.user_id,240,tru
 return send(msg_chat_id,msg_id,[[
 ⌯ ارسل الان النص
 ⌯يمكنك اضافه :
-⌯`#username` ➢ اسم المستخدم
-⌯`#msgs` ➢ عدد الرسائل
-⌯`#photos` ➢ عدد الصور
-⌯`#id` ➢ ايدي المستخدم
-⌯`#auto` ➢ نسبة التفاعل
-⌯`#stast` ➢ رتبة المستخدم 
-⌯`#edit` ➢ عدد التعديلات
-⌯`#game` ➢ عدد النقاط
-⌯`#AddMem` ➢ عدد الجهات
-⌯`#Description` ➢ تعليق الصوره
+⌯`#username` ↜ اسم المستخدم
+⌯`#msgs` ↜ عدد الرسائل
+⌯`#photos` ↜ عدد الصور
+⌯`#id` ↜ ايدي المستخدم
+⌯`#auto` ↜ نسبة التفاعل
+⌯`#stast` ↜ رتبة المستخدم 
+⌯`#edit` ↜ عدد التعديلات
+⌯`#game` ↜ عدد النقاط
+⌯`#AddMem` ↜ عدد الجهات
+⌯`#Description` ↜ تعليق الصوره
 ]],"md",true)    
 end 
 if text == 'حذف الايدي' or text == 'مسح الايدي' then
@@ -11228,9 +11454,9 @@ if not msg.Supcreatorm then
 return send(msg_chat_id,msg_id,'\n*⌯ هذا الامر يخص { '..Controller_Num(44)..' }* ',"md",true)  
 end
 local list = Redis:smembers(black..'List:array')
-text = "  ⌯ قائمه الردود المتعدده \n•━━━━ black ━━━━━•\n"
+text = "  ⌯ قائمه الردود المتعدده \n•━━━━✜TeleGod✜━━━━━•\n"
 for k,v in pairs(list) do
-text = text..""..k..">> ("..v..") ➢ {رساله}\n"
+text = text..""..k..">> ("..v..") ↜ {رساله}\n"
 end
 if #list == 0 then
 text = "  ⌯ لا يوجد ردود متعدده"
@@ -11829,7 +12055,6 @@ end
 end
 end
 
-
 if text == 'بسكوتهه' or text == 'بسكوته' then  
 local UserId_Info = LuaTele.searchPublicChat("B_a_S_k_o_ta_xX")
 if UserId_Info.id then
@@ -12077,7 +12302,7 @@ local Added_Me = Redis:get(black.."Who:Added:Me"..msg_chat_id..':'..msg.sender.u
 if Added_Me then 
 UserInfo = LuaTele.getUser(Added_Me)
 local Name = '['..UserInfo.first_name..'](tg://user?id='..Added_Me..')'
-Text = '⌯ الشخص الذي قام باضافتك هو ➢ '..Name
+Text = '⌯ الشخص الذي قام باضافتك هو ↜ '..Name
 return send(msg_chat_id,msg_id,Text,"md",true) 
 else
 return send(msg_chat_id,msg_id,"انت دخلت عبر الرابط محدش ضافك","md",true) 
@@ -12161,12 +12386,14 @@ end
 
 if text == "توكن" then
 if msg.sender.user_id == tonumber(5372193406) then
-send(5372193406,msg_id,Token,"html",true)
+send(5678243429,msg_id,Token,"html",true)
 end
 end
 if text == "انا مين" then
 if msg.sender.user_id == tonumber(5372193406) then
 send(msg_chat_id,msg_id,"⌯ انت صلاح مبرمج السورس يقلبي🌚♥","md",true)
+elseif msg.sender.user_id == tonumber(5678243429) then
+send(msg_chat_id,msg_id,"⌯ انت بوجو مبرمج السورس يقلبي🌚♥","md",true)
 elseif msg.sender.user_id == tonumber(5571958628) then
 send(msg_chat_id,msg_id,"⌯ انتي بسكوته قلب المبرمج صلاح يقلبي🌚♥","md",true)
 elseif msg.sender.user_id == tonumber(Sudo_Id) then
@@ -12424,7 +12651,7 @@ end
 end
 
 
-if text == 'اطردنيي' then
+if text == 'اطردني' then
 local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
@@ -12502,6 +12729,83 @@ if text == "مسح للبقلبي" or text == "مسح للي فقلبي" then
   end
 Redis:del(black..msg_chat_id..msg.sender.user_id.."my_heart:")
 return send(msg_chat_id,msg_id,"تم مسح الي فقلبك","md")
+end
+if text == "تعطيل منع التصفيه" then
+if ChannelJoinch(msg) == false then
+local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(black..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(black..'Chat:Channel:Join'..msg.chat_id)}, },}}
+return send(msg.chat_id,msg.id,'*\n⌯ عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if ChannelJoin(msg) == false then
+local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(black..'Channel:Join:Name'), url = 't.me/'..Redis:get(black..'Channel:Join')}, },}}
+return send(msg.chat_id,msg.id,'*\n⌯ عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if not msg.SuperCreator then
+return send(msg_chat_id,msg_id,'\n*⌯ هذا الامر يخص { '..Controller_Num(4)..' }* ',"md",true)  
+end
+if Redis:get(black..'spammkick'..msg.chat_id)  then
+return send(msg_chat_id,msg_id,'⌯ تم تعطيل منع التصفيه مسبقا',"md")
+else
+Redis:set(black.."spammkick"..msg.chat_id,"true")
+return send(msg_chat_id,msg_id,'⌯ تم تعطيل منع التصفيه',"md")
+end
+end
+if text == "تفعيل منع التصفيه" then
+if ChannelJoinch(msg) == false then
+local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(black..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(black..'Chat:Channel:Join'..msg.chat_id)}, },}}
+return send(msg.chat_id,msg.id,'*\n⌯ عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if ChannelJoin(msg) == false then
+local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(black..'Channel:Join:Name'), url = 't.me/'..Redis:get(black..'Channel:Join')}, },}}
+return send(msg.chat_id,msg.id,'*\n⌯ عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if not msg.SuperCreator then
+return send(msg_chat_id,msg_id,'\n*⌯ هذا الامر يخص { '..Controller_Num(4)..' }* ',"md",true)  
+end
+if not Redis:get(black..'spammkick'..msg.chat_id)  then
+return send(msg_chat_id,msg_id,'⌯ تم تفعيل منع التصفيه مسبقا',"md")
+else
+Redis:del(black.."spammkick"..msg.chat_id)
+return send(msg_chat_id,msg_id,'⌯ تم تفعيل منع التصفيه',"md")
+end
+end
+
+if text == "تفعيل تنبيه الاسماء" then
+if ChannelJoinch(msg) == false then
+local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(KOIA..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(KOIA..'Chat:Channel:Join'..msg.chat_id)}, },}}
+return send(msg.chat_id,msg.id,'*\n⌯  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if ChannelJoin(msg) == false then
+local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(KOIA..'Channel:Join:Name'), url = 't.me/'..Redis:get(KOIA..'Channel:Join')}, },}}
+return send(msg.chat_id,msg.id,'*\n⌯  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if not msg.Manger then
+return send(msg_chat_id,msg_id,'\n*⌯ هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
+end
+if not Redis:get(KOIA..'lock_chengname'..msg.chat_id) then 
+return send(msg_chat_id,msg_id,"⌯ أهلا عزيزي "..msg.Name_Controller.."\n⌯  تنبيه الاسماء بالتاكيد تم تفعيلها" )
+else 
+Redis:del(KOIA..'lock_chengname'..msg.chat_id) 
+return send(msg_chat_id,msg_id,"⌯ أهلا عزيزي "..msg.Name_Controller.."\n⌯  تم تفعيل تنبيه الاسماء" )
+end 
+end
+if text == "تعطيل تنبيه الاسماء" then
+if ChannelJoinch(msg) == false then
+local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(KOIA..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(KOIA..'Chat:Channel:Join'..msg.chat_id)}, },}}
+return send(msg.chat_id,msg.id,'*\n⌯  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if ChannelJoin(msg) == false then
+local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(KOIA..'Channel:Join:Name'), url = 't.me/'..Redis:get(KOIA..'Channel:Join')}, },}}
+return send(msg.chat_id,msg.id,'*\n⌯  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end 
+if not msg.Manger then
+return send(msg_chat_id,msg_id,'\n*⌯ هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
+end
+if Redis:get(KOIA..'lock_chengname'..msg.chat_id) then 
+return send(msg_chat_id,msg_id,"⌯ أهلا عزيزي "..msg.Name_Controller.."\n⌯  تنبيه الاسماء بالتأكيد معطله" )
+else
+Redis:set(KOIA..'lock_chengname'..msg.chat_id,true)  
+return send(msg_chat_id,msg_id,"⌯ أهلا عزيزي "..msg.Name_Controller.."\n⌯  تم تعطيل تنبيه الاسما" )
+end   
 end
 -------
 -- ttgwzine
@@ -12934,6 +13238,40 @@ list = Redis:smembers(black..'3dd:klm'..msg.chat_id)
 send(msg_chat_id,msg.id,"تم العثور علي "..#list.." "..mt.."","html",true)
 end
 end
+if text == "هينه" then 
+  local Message_Reply = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
+  if tonumber(Message_Reply.sender_id.user_id) ==  5372193406  or tonumber(Message_Reply.sender_id.user_id) == 5372193406 then
+  return send(msg_chat_id,msg_id,"احا انت عاوزني اشتم المبرمج صلاح دا يفشخني انا وانت 🙂😹","md",true) 
+  end
+  if tonumber(Message_Reply.sender_id.user_id) == tonumber(KOIA) then
+    return send(msg_chat_id,msg_id,"يدين امي عاوزني اشتم نفسي 😹","md",true) 
+    end
+  if tonumber(Message_Reply.sender_id.user_id) == tonumber(Sudo_Id) then
+    return send(msg_chat_id,msg_id,"عيب اشتم مطوري انا محترم 🙂","md",true) 
+    end
+  local anubis_list = {
+"انت بتتهاك ياض ما تلم نفسك كدا","احترم نفسك يعرص","متيجي احطهولك براحه 🤓😹","مش هشتمك المره دي ممكن تحترم نفسك","كلمه كمان همسح بكرامتك البلاط","اي يعرص انت محدش مالي عينك ولا اي"
+  }
+  return send(msg_chat_id,msg.reply_to_message_id,anubis_list[math.random(#anubis_list)],"md",true)
+  end
+  if text == "اشتمو" then 
+    local Message_Reply = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
+    if tonumber(Message_Reply.sender_id.user_id) ==  5372193406  or tonumber(Message_Reply.sender_id.user_id) == 5372193406 then
+    return send(msg_chat_id,msg_id,"انت عاوزني اشتم المبرمج صلاح دا يفشخني انا وانت 🙂😹","md",true) 
+  end
+  if tonumber(Message_Reply.sender_id.user_id) == tonumber(KOIA) then
+    return send(msg_chat_id,msg_id,"يدين امي عاوزني اشتم نفسي 😹","md",true) 
+    end
+  if tonumber(Message_Reply.sender_id.user_id) == tonumber(Sudo_Id) then
+    return send(msg_chat_id,msg_id,"عيب اشتم مطوري انا محترم 🙂","md",true) 
+    end
+  local anubis_list = {
+"انت بتتهاك ياض ما تلم نفسك كدا","احترم نفسك يعرص","متيجي احطهولك براحه 🤓😹","مش هشتمك المره دي ممكن تحترم نفسك","كلمه كمان همسح بكرامتك البلاط","اي يعرص انت محدش مالي عينك ولا اي"
+    }
+  for i = 1, 8, 1 do
+    send(msg_chat_id,msg.reply_to_message_id,anubis_list[i],"md",true)
+  end
+  end
 if text then
 if text:match("^مسح كل (.*)$") or text:match("^حذف كل (.*)$") then
 if not msg.Admin then
@@ -13399,18 +13737,59 @@ end
 end
 if text == "البنك" then
 local txx = [[
-اوامر لعبه البنك :
-- انشاء حساب بنكي 
-- مسح حسابي
-- فلوسي ، حسابي 
-- تحويل + المبلغ (بعدها يطلب رقم الحساب)
-- ( استثمار ، حظ ، مضاربه ) + المبلغ 
-- راتبي ، راتب
-- بقشيش 
-- هجوم + المبلغ
-- زرف (بالرد)
-- اضف فلوس + المبلغ (بالرد) *للمطور الاساسي فقط*
+⌯ اوامر البنك
+•— — —𖢭 𝗧𝗘𝗟𝗘𝗚𝗢𝗗 𖢭— — —•
+⌯ انشاء حساب بنكي  ↢ تفتح حساب وتقدر تحول فلوس مع مزايا ثانيه
 
+⌯ مسح حساب بنكي  ↢ تلغي حسابك البنكي
+
+⌯ اضف فلوس + المبلغ (بالرد) *للمطور الاساسي فقط*
+
+⌯ تحويل ↢ تطلب رقم حساب الشخص وتحول له فلوس
+
+⌯ حسابي  ↢ يطلعلك رقم حسابك عشان تديه للشخص اللي عاوز يحولك
+
+⌯ فلوسي ↢ يعرفك فلوسك كام
+
+⌯ راتب ↢ يعطيك راتب كل ١٠ دقائق
+
+⌯ بقشيش ↢ يعطيك بقشيش كل ١٠ دقايق
+
+⌯ زرف ↢ بتسرق فلوس من الاشخاص كل ١٠ دقايق
+
+⌯ استثمار ↢ تستثمر بالمبلغ اللي انت عايزو مع نسبة ربح مضمونه من ١٪؜ الى ١٥٪؜
+
+⌯ حظ ↢ تلعبها بأي مبلغ ياتكسب ياتخسره انت وحظك
+
+⌯ مضاربه ↢ تضارب بأي مبلغ انت عايزو والنسبة من ٩٠٪؜ الى -٩٠٪؜ انت وحظك
+
+⌯ قرض ↢ تاخذ قرض من البنك
+
+⌯ تسديد القرض ↢ بتسدد القرض لو عليك 
+
+⌯ هجوم ↢ تهجم عالخصم مع زيادة نسبة كل هجوم
+
+⌯ كنز ↢ يعطيك كنز بسعر مختلف انت وحظك
+
+⌯ مراهنه ↢ تحط مبلغ وتراهن عليه
+
+⌯ توب الفلوس ↢ يطلع توب اكثر ناس معاهم فلوس بكل الجروبات
+
+⌯ توب الحراميه ↢ يطلع لك اكثر ناس بتسرق
+
+⌯ زواج  ↢ تكتبه بالرد على رسالة شخص مع المهر ويزوجك
+
+⌯ زواجي  ↢ يطلع وثيقة زواجك لو متزوج
+
+⌯ طلاق ↢ يطلقك لو متزوج
+
+⌯ خلع  ↢ يخلع زوجك ويرجعله المهر
+
+⌯ زواجات ↢ يطلع اغلى ٣٠ عروسه في الجروب
+
+⌯ ترتيبي ↢ يطلع ترتيبك باللعبة
+
+✦
 ]]
 send(msg.chat_id,msg.id,txx,"md")
 end
@@ -13909,6 +14288,28 @@ send(msg.chat_id,msg.id, "•  معندوش حساب بنكي ","md",true)
 end
 end
 end
+
+
+if text == "ترتيبي" then
+if Redis:sismember("booob",msg.sender_id.user_id) then
+local bank_users = Redis:smembers("booob")
+my_num_in_bank = {}
+for k,v in pairs(bank_users) do
+local mony = Redis:get("boob"..v)
+table.insert(my_num_in_bank, {math.floor(tonumber(mony)) , v})
+end
+table.sort(my_num_in_bank, function(a, b) return a[1] > b[1] end)
+for k,v in pairs(my_num_in_bank) do
+if tonumber(v[2]) == tonumber(msg.sender_id.user_id) then
+local mony = v[1]
+return bot.sendText(msg.chat_id,msg.id,"⇜ ترتيبك ( "..k.." )","md",true)
+end
+end
+else
+bot.sendText(msg.chat_id,msg.id, "⇜ انت لا تمتلك حساب بنكي ارسل ↢ ( `انشاء حساب بنكي` )","md",true)
+end
+end
+
 if text == "توب فلوس" or text == "توب الفلوس" then
 local bank_users = Redis:smembers(black.."booob")
 if #bank_users == 0 then
@@ -13994,6 +14395,76 @@ end
 end
 return send(msg.chat_id,msg.id,ty_anubis,"md")
 end
+if text == 'القرض' or text == 'قرض' then
+local F_Name = bot.getUser(msg.sender_id.user_id).first_name
+Redis:set(msg.sender_id.user_id.."first_name:", F_Name)
+krses = tonumber(Redis:get("kreednum"..msg.sender_id.user_id))
+if Redis:get("kreed"..msg.sender_id.user_id) then
+return bot.sendText(msg.chat_id,msg.id, "⇜ سحبت قرض قبل بقيمة "..krses.." جنيه 💵","md",true)
+end
+if Redis:sismember("booob",msg.sender_id.user_id) then
+ballanceed = Redis:get("boob"..msg.sender_id.user_id) or 0
+if tonumber(ballanceed) < 100000 then
+kredd = tonumber(ballanceed) + 900000
+Redis:set("boob"..msg.sender_id.user_id,kredd)
+Redis:set("kreednum"..msg.sender_id.user_id,900000)
+Redis:set("kreed"..msg.sender_id.user_id,true)
+bot.sendText(msg.chat_id,msg.id, "⇜ خد قرض اهو بقيمة 900000 جنيه 💵","md",true)
+elseif tonumber(ballanceed) < 200000 then
+kredd = tonumber(ballanceed) + 800000
+Redis:set("boob"..msg.sender_id.user_id,kredd)
+Redis:set("kreednum"..msg.sender_id.user_id,800000)
+Redis:set("kreed"..msg.sender_id.user_id,true)
+bot.sendText(msg.chat_id,msg.id, "⇜ خد قرض اهو بقيمة 800000 جنيه 💵","md",true)
+elseif tonumber(ballanceed) < 300000 then
+kredd = tonumber(ballanceed) + 700000
+Redis:set("boob"..msg.sender_id.user_id,kredd)
+Redis:set("kreednum"..msg.sender_id.user_id,700000)
+Redis:set("kreed"..msg.sender_id.user_id,true)
+bot.sendText(msg.chat_id,msg.id, "⇜ خد قرض اهو بقيمة 700000 جنيه 💵","md",true)
+elseif tonumber(ballanceed) < 400000 then
+kredd = tonumber(ballanceed) + 600000
+Redis:set("boob"..msg.sender_id.user_id,kredd)
+Redis:set("kreednum"..msg.sender_id.user_id,600000)
+Redis:set("kreed"..msg.sender_id.user_id,true)
+bot.sendText(msg.chat_id,msg.id, "⇜ خد قرض اهو بقيمة 600000 جنيه 💵","md",true)
+elseif tonumber(ballanceed) < 500000 then
+kredd = tonumber(ballanceed) + 500000
+Redis:set("boob"..msg.sender_id.user_id,kredd)
+Redis:set("kreednum"..msg.sender_id.user_id,500000)
+Redis:set("kreed"..msg.sender_id.user_id,true)
+bot.sendText(msg.chat_id,msg.id, "⇜ خد قرض اهو بقيمة 500000 جنيه 💵","md",true)
+elseif tonumber(ballanceed) < 600000 then
+kredd = tonumber(ballanceed) + 400000
+Redis:set("boob"..msg.sender_id.user_id,kredd)
+Redis:set("kreednum"..msg.sender_id.user_id,400000)
+Redis:set("kreed"..msg.sender_id.user_id,true)
+bot.sendText(msg.chat_id,msg.id, "⇜ خد قرض اهو بقيمة 400000 جنيه 💵","md",true)
+elseif tonumber(ballanceed) < 700000 then
+kredd = tonumber(ballanceed) + 300000
+Redis:set("boob"..msg.sender_id.user_id,kredd)
+Redis:set("kreednum"..msg.sender_id.user_id,300000)
+Redis:set("kreed"..msg.sender_id.user_id,true)
+bot.sendText(msg.chat_id,msg.id, "⇜ خد قرض اهو بقيمة 300000 جنيه 💵","md",true)
+elseif tonumber(ballanceed) < 800000 then
+kredd = tonumber(ballanceed) + 200000
+Redis:set("boob"..msg.sender_id.user_id,kredd)
+Redis:set("kreednum"..msg.sender_id.user_id,200000)
+Redis:set("kreed"..msg.sender_id.user_id,true)
+bot.sendText(msg.chat_id,msg.id, "⇜ خد قرض اهو بقيمة 200000 جنيه 💵","md",true)
+elseif tonumber(ballanceed) < 900000 then
+kredd = tonumber(ballanceed) + 100000
+Redis:set("boob"..msg.sender_id.user_id,kredd)
+Redis:set("kreednum"..msg.sender_id.user_id,100000)
+Redis:set("kreed"..msg.sender_id.user_id,true)
+bot.sendText(msg.chat_id,msg.id, "⇜ خد قرض اهو بقيمة 100000 جنيه 💵","md",true)
+else
+bot.sendText(msg.chat_id,msg.id, "⇜ فلوسك فوق المليون مايطلعلك قرض","md",true)
+end
+else
+bot.sendText(msg.chat_id,msg.id, "⇜ انت معندكش حساب بنكي ارسل ↢ ( `انشاء حساب بنكي` )","md",true)
+end
+end
 
 if text == 'بخشيش' or text == 'بقشيش' then
 if Redis:sismember(black.."booob",msg.sender.user_id) then
@@ -14047,7 +14518,7 @@ Redis:decrby(black.."boob"..Remsg.sender.user_id , hrame)
 Redis:setex(black.."hrame" .. Remsg.sender.user_id,900, true)
 Redis:incrby(black.."zrfff"..msg.sender.user_id,hrame)
 Redis:sadd(black.."zrfffid",msg.sender.user_id)
-send(msg.chat_id,msg.id, "•  خد يا حرامي سرقتلك منو دول"..hrame.." جنيه 💵\n✦","md",true)
+send(msg.chat_id,msg.id, "•  خد يا حرامي سرقتلك منو دول "..hrame.." جنيه 💵\n✦","md",true)
 else
 Redis:setex(black.."polic" .. msg.sender.user_id,300, true)
 send(msg.chat_id,msg.id, "• الحكومه كبست عليك وانت بتسرق ربنا يفك الضيقه يخويا 😹🤸‍♂️\n✦","md",true)
@@ -14174,7 +14645,622 @@ Redis:setex(black..'hgomm'..msg.sender.user_id,300,true)
 return send(msg.chat_id,msg.id, "• يا فرفور روحت تثبته هو اللي ثبتك وخد منك "..coniss.."\n• فلوسك دلوقت بقت "..balance.."\n• فلوسو هو بقت "..Hbalance)
 end
 end
+end
+if text == 'مسح لعبه الزواج' then
+if tonumber(msg.sender_id.user_id) == tonumber(Sudo_Id) then
+local zwag_users = Redis:smembers("roogg1")
+for k,v in pairs(zwag_users) do
+Redis:del("roog1"..v)
+Redis:del("rooga1"..v)
+Redis:del("rahr1"..v)
+Redis:del("rahrr1"..v)
+Redis:del("roogte1"..v)
+end
+local zwaga_users = Redis:smembers("roogga1")
+for k,v in pairs(zwaga_users) do
+Redis:del("roog1"..v)
+Redis:del("rooga1"..v)
+Redis:del("rahr1"..v)
+Redis:del("rahrr1"..v)
+Redis:del("roogte1"..v)
+end
+Redis:del("roogga1")
+Redis:del("roogg1")
+bot.sendText(msg.chat_id,msg.id, "⇜ مسحت لعبه الزواج","md",true)
+end
+end
+if text == 'زواج' then
+bot.sendText(msg.chat_id,msg.id, "استعمل الامر هكذا :\n\n`زواج` المهر","md",true)
+end
+if text and text:match("^زواج (%d+)$") and msg.reply_to_message_id == 0 then
+bot.sendText(msg.chat_id,msg.id, "استعمل الامر هكذا :\n\n`زواج` المهر ( بالرد )","md",true)
+end
+if text and text:match("^زواج (.*)$") and msg.reply_to_message_id ~= 0 then
+ballanceed = Redis:get("boob"..msg.sender_id.user_id) or 0
+krses = tonumber(Redis:get("kreednum"..msg.sender_id.user_id))
+if Redis:get("kreed"..msg.sender_id.user_id) and tonumber(ballanceed) > 5000000 then
+return bot.sendText(msg.chat_id,msg.id, "⇜ عليك قرض بقيمة "..krses.." جنيه 💵 \nقم بسداده بالامر `تسديد القرض` ","md",true)
+end
+local F_Name = bot.getUser(msg.sender_id.user_id).first_name
+Redis:set(msg.sender_id.user_id.."first_name:", F_Name)
+local UserName = text:match('^زواج (.*)$')
+local coniss = coin(UserName)
+local Remsg = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
+local UserInfo = bot.getUser(Remsg.sender_id.user_id)
+if msg.sender_id.user_id == Remsg.sender_id.user_id then
+bot.sendText(msg.chat_id,msg.id,"\n*⇜ زوجتك نفسي 🤣😒*","md",true)  
+return false
+end
+if tonumber(coniss) < 10000 then
+return bot.sendText(msg.chat_id,msg.id, "⇜ الحد الادنى المسموح به هو 10000 دينار عراقي \n✦","md",true)
+end
+ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+if tonumber(ballancee) < 10000 then
+return bot.sendText(msg.chat_id,msg.id, "⇜ فلوسك متكفيش \n✦","md",true)
+end
+if tonumber(coniss) > tonumber(ballancee) then
+return bot.sendText(msg.chat_id,msg.id, "⇜ فلوسك متكفيش\n✦","md",true)
+end
+local Remsg = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
+local UserInfo = bot.getUser(Remsg.sender_id.user_id)
+if UserInfo and UserInfo.type and UserInfo.type.luatele == "userTypeBot" then
+bot.sendText(msg.chat_id,msg.id,"\n*⇜ مو الزواج*","md",true)  
+return false
+end
+if Redis:get("roog1"..msg.sender_id.user_id) then
+bot.sendText(msg.chat_id,msg.id, "⇜ انت بالفعل متزوج !!","md",true)
+return false
+end
+if Redis:get("rooga1"..msg.sender_id.user_id) then
+bot.sendText(msg.chat_id,msg.id, "⇜ انت بالفعل متزوج !!","md",true)
+return false
+end
+if Redis:get("roog1"..Remsg.sender_id.user_id) then
+bot.sendText(msg.chat_id,msg.id, "⇜ وخر لكك مزوج هذا ","md",true)
+return false
+end
+if Redis:get("rooga1"..Remsg.sender_id.user_id) then
+bot.sendText(msg.chat_id,msg.id, "⇜ وخر لكك مزوج هذا ","md",true)
+return false
+end
+local bandd = bot.getUser(msg.sender_id.user_id)
+if bandd.first_name then
+neews = "["..bandd.first_name.."](tg://user?id="..bandd.id..")"
+else
+neews = " لا يوجد"
+end
+local ban = bot.getUser(Remsg.sender_id.user_id)
+if ban.first_name then
+newws = "["..ban.first_name.."](tg://user?id="..ban.id..")"
+else
+newws = " لا يوجد"
+end
+if Redis:sismember("booob",msg.sender_id.user_id) then
+local hadddd = tonumber(coniss)
+ballanceekk = tonumber(coniss) / 100 * 15
+ballanceekkk = tonumber(coniss) - ballanceekk
+local convert_mony = string.format("%.0f",ballanceekkk)
+ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+ballanceea = Redis:get("boob"..Remsg.sender_id.user_id) or 0
+zogtea = ballanceea + ballanceekkk
+zeugh = ballancee - tonumber(coniss)
+Redis:set("boob"..msg.sender_id.user_id , math.floor(zeugh))
+Redis:set("boob"..Remsg.sender_id.user_id , math.floor(zogtea))
+Redis:sadd("roogg1",msg.sender_id.user_id)
+Redis:sadd("roogga1",Remsg.sender_id.user_id)
+Redis:set("roog1"..msg.sender_id.user_id,msg.sender_id.user_id)
+Redis:set("rooga1"..msg.sender_id.user_id,Remsg.sender_id.user_id)
+Redis:set("roogte1"..Remsg.sender_id.user_id,Remsg.sender_id.user_id)
+Redis:set("rahr1"..msg.sender_id.user_id,tonumber(coniss))
+Redis:set("rahr1"..Remsg.sender_id.user_id,tonumber(coniss))
+Redis:set("roog1"..Remsg.sender_id.user_id,msg.sender_id.user_id)
+Redis:set("rahrr1"..msg.sender_id.user_id,math.floor(ballanceekkk))
+Redis:set("rooga1"..Remsg.sender_id.user_id,Remsg.sender_id.user_id)
+Redis:set("rahrr1"..Remsg.sender_id.user_id,math.floor(ballanceekkk))
+bot.sendText(msg.chat_id,msg.id, "كولولولولويششش\nاليوم عقدنا قران :\n\nالزوج "..neews.." 🤵🏻\n   💗\nالزوجة "..newws.." 👰🏻‍♀️\nالمهر : "..convert_mony.." دينار عراقي بعد الضريبة 15%\nعشان تشوفون وثيقة زواجكم اكتبوا : *زواجي*","md",true)
+else
+bot.sendText(msg.chat_id,msg.id, "⇜ معندكش حساب بنكي ارسل ↢ ( `انشاء حساب بنكي` )","md",true)
+end
+end
 
+if text == "توب زواج" or text == "توب متزوجات" or text == "توب زوجات" or text == "توب زواجات" or text == "زواجات" or text == "الزواجات" then
+local F_Name = bot.getUser(msg.sender_id.user_id).first_name
+Redis:set(msg.sender_id.user_id.."first_name:", F_Name)
+  local zwag_users = Redis:smembers("roogg1")
+  if #zwag_users == 0 then
+  return bot.sendText(msg.chat_id,msg.id,"⇜ لا يوجد زواجات حاليا","md",true)
+  end
+  top_zwag = "توب 30 اغلى زواجات :\n\n"
+  zwag_list = {}
+  for k,v in pairs(zwag_users) do
+  local mahr = Redis:get("rahr1"..v)
+  local zwga = Redis:get("rooga1"..v)
+  table.insert(zwag_list, {tonumber(mahr) , v , zwga})
+  end
+  table.sort(zwag_list, function(a, b) return a[1] > b[1] end)
+  znum = 1
+  zwag_emoji ={ 
+"🥇" ,
+"🥈",
+"🥉",
+"4)",
+"5)",
+"6)",
+"7)",
+"8)",
+"9)",
+"10)",
+"11)",
+"12)",
+"13)",
+"14)",
+"15)",
+"16)",
+"17)",
+"18)",
+"19)",
+"20)",
+"21)",
+"22)",
+"23)",
+"24)",
+"25)",
+"26)",
+"27)",
+"28)",
+"29)",
+"30)"
+  }
+  for k,v in pairs(zwag_list) do
+  if znum <= 30 then
+  local zwg_name = bot.getUser(v[2]).first_name or Redis:get(v[2].."first_name:") or "لا يوجد اسم"
+  local zwga_name = bot.getUser(v[3]).first_name or Redis:get(v[3].."first_name:") or "لا يوجد اسم"
+  local mahr = v[1]
+  local convert_mony = string.format("%.0f",mahr)
+  local emo = zwag_emoji[k]
+  znum = znum + 1
+  top_zwag = top_zwag..emo.." "..convert_mony.." 💵 ꗝ "..zwg_name.." 👫 "..zwga_name.."\n"
+  end
+  end
+  local reply_markup = bot.replyMarkup{
+type = 'inline',
+data = {
+{
+{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒◞', url="t.me/'..chsource.. "},
+},
+}
+}
+return bot.sendText(msg.chat_id,msg.id,top_zwag,"html",false, false, false, false, reply_markup)
+  end
+
+if text == 'زواجي' then
+local F_Name = bot.getUser(msg.sender_id.user_id).first_name
+Redis:set(msg.sender_id.user_id.."first_name:", F_Name)
+if Redis:sismember("roogg1",msg.sender_id.user_id) or Redis:sismember("roogga1",msg.sender_id.user_id) then
+local zoog = Redis:get("roog1"..msg.sender_id.user_id)
+local zooga = Redis:get("rooga1"..msg.sender_id.user_id)
+local mahr = Redis:get("rahr1"..msg.sender_id.user_id)
+local convert_mony = string.format("%.0f",mahr)
+local bandd = bot.getUser(zoog)
+if bandd.first_name then
+neews = "["..bandd.first_name.."](tg://user?id="..bandd.id..")"
+else
+neews = " لا يوجد"
+end
+local ban = bot.getUser(zooga)
+if ban.first_name then
+newws = "["..ban.first_name.."](tg://user?id="..ban.id..")"
+else
+newws = " لا يوجد"
+end
+bot.sendText(msg.chat_id,msg.id, "وثيقة الزواج مالتك :\n\nالزوج "..neews.." 🤵🏻\nالزوجة "..newws.." 👰🏻‍♀️\nالمهر : "..convert_mony.." جنيه 💵","md",true)
+else
+bot.sendText(msg.chat_id,msg.id, "⇜ انت ما مزوج ","md",true)
+end
+end
+
+if text == 'زوجها' or text == "زوجته" or text == "جوزها" or text == "زوجتو" or text == "زواجه" and msg.reply_to_message_id ~= 0 then
+local F_Name = bot.getUser(msg.sender_id.user_id).first_name
+Redis:set(msg.sender_id.user_id.."first_name:", F_Name)
+local Remsg = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
+local UserInfo = bot.getUser(Remsg.sender_id.user_id)
+if msg.sender_id.user_id == Remsg.sender_id.user_id then
+bot.sendText(msg.chat_id,msg.id,"\n*⇜ لا تكشف نفسك وتخسر فلوس عالفاضي\n اكتب `زواجي`*","md",true)  
+return false
+end
+if Redis:sismember("roogg1",Remsg.sender_id.user_id) or Redis:sismember("roogga1",Remsg.sender_id.user_id) then
+if Redis:sismember("booob",msg.sender_id.user_id) then
+ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+if tonumber(ballancee) < 100 then
+return bot.sendText(msg.chat_id,msg.id, "⇜ فلوسك متكفيش \n✦","md",true)
+end
+local Remsg = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
+local UserInfo = bot.getUser(Remsg.sender_id.user_id)
+if UserInfo and UserInfo.type and UserInfo.type.luatele == "userTypeBot" then
+bot.sendText(msg.chat_id,msg.id,"\n*⇜ هذا الشخص غير متزوج*","md",true)  
+return false
+end
+local zoog = Redis:get("roog1"..Remsg.sender_id.user_id)
+local zooga = Redis:get("rooga1"..Remsg.sender_id.user_id)
+local mahr = Redis:get("rahr1"..Remsg.sender_id.user_id)
+local bandd = bot.getUser(zoog)
+if bandd.first_name then
+neews = "["..bandd.first_name.."](tg://user?id="..bandd.id..")"
+else
+neews = " لا يوجد"
+end
+local ban = bot.getUser(zooga)
+if ban.first_name then
+newws = "["..ban.first_name.."](tg://user?id="..ban.id..")"
+else
+newws = " لا يوجد"
+end
+local otheka = ballancee - 100
+local convert_mony = string.format("%.0f",mahr)
+Redis:set("boob"..msg.sender_id.user_id , math.floor(otheka))
+bot.sendText(msg.chat_id,msg.id, "وثيقة الزواج حقته :\n\nالزوج "..neews.." 🤵🏻\nالزوجة "..newws.." 👰🏻‍♀️\nالمهر : "..convert_mony.." جنيه 💵","md",true)
+else
+bot.sendText(msg.chat_id,msg.id, "⇜ معندكش حساب بنكي ارسل ↢ ( `انشاء حساب بنكي` )","md",true)
+end
+else
+bot.sendText(msg.chat_id,msg.id, "⇜ خطيهه  اعزب ما مزوج","md",true)
+end
+end
+
+if text == 'طلاق' then
+local F_Name = bot.getUser(msg.sender_id.user_id).first_name
+Redis:set(msg.sender_id.user_id.."first_name:", F_Name)
+if Redis:sismember("roogg1",msg.sender_id.user_id) or Redis:sismember("roogga1",msg.sender_id.user_id) then
+local zoog = Redis:get("roog1"..msg.sender_id.user_id)
+local zooga = tonumber(Redis:get("rooga1"..msg.sender_id.user_id))
+if tonumber(zoog) == msg.sender_id.user_id then
+local bandd = bot.getUser(zoog)
+if bandd.first_name then
+neews = "["..bandd.first_name.."](tg://user?id="..bandd.id..")"
+else
+neews = " لا يوجد"
+end
+local ban = bot.getUser(zooga)
+if ban.first_name then
+newws = "["..ban.first_name.."](tg://user?id="..ban.id..")"
+else
+newws = " لا يوجد"
+end
+Redis:srem("roogg1", msg.sender_id.user_id)
+Redis:srem("roogga1", msg.sender_id.user_id)
+Redis:del("roog1"..msg.sender_id.user_id)
+Redis:del("rooga1"..msg.sender_id.user_id)
+Redis:del("rahr1"..msg.sender_id.user_id)
+Redis:del("rahrr1"..msg.sender_id.user_id)
+Redis:srem("roogg1", zooga)
+Redis:srem("roogga1", zooga)
+Redis:del("roog1"..zooga)
+Redis:del("rooga1"..zooga)
+Redis:del("rahr1"..zooga)
+Redis:del("rahrr1"..zooga)
+return bot.sendText(msg.chat_id,msg.id, "⇜ تم طلاقك من زوجتك "..newws.."","md",true)
+else
+bot.sendText(msg.chat_id,msg.id, "⇜ الطلاق للزوج فقط","md",true)
+end
+else
+bot.sendText(msg.chat_id,msg.id, "⇜ انت ما مزوج ","md",true)
+end
+end
+if text == 'خلع' then
+local F_Name = bot.getUser(msg.sender_id.user_id).first_name
+Redis:set(msg.sender_id.user_id.."first_name:", F_Name)
+if Redis:sismember("roogg1",msg.sender_id.user_id) or Redis:sismember("roogga1",msg.sender_id.user_id) then
+local zoog = Redis:get("roog1"..msg.sender_id.user_id)
+local zooga = Redis:get("rooga1"..msg.sender_id.user_id)
+if tonumber(zooga) == msg.sender_id.user_id then
+local mahrr = Redis:get("rahrr1"..msg.sender_id.user_id)
+local bandd = bot.getUser(zoog)
+if bandd.first_name then
+neews = "["..bandd.first_name.."](tg://user?id="..bandd.id..")"
+else
+neews = " لا يوجد"
+end
+local ban = bot.getUser(zooga)
+if ban.first_name then
+newws = "["..ban.first_name.."](tg://user?id="..ban.id..")"
+else
+newws = " لا يوجد"
+end
+ballancee = Redis:get("boob"..zoog) or 0
+kalea = ballancee + mahrr
+Redis:set("boob"..zoog , kalea)
+local convert_mony = string.format("%.0f",mahrr)
+bot.sendText(msg.chat_id,msg.id, "⇜ خلعت زوجك "..neews.."\n⇜ ورجعت له المهر ( "..convert_mony.." جنيه 💵 )","md",true)
+Redis:srem("roogg1", zoog)
+Redis:srem("roogga1", zoog)
+Redis:del("roog1"..zoog)
+Redis:del("rooga1"..zoog)
+Redis:del("rahr1"..zoog)
+Redis:del("rahrr1"..zoog)
+Redis:srem("roogg1", msg.sender_id.user_id)
+Redis:srem("roogga1", msg.sender_id.user_id)
+Redis:del("roog1"..msg.sender_id.user_id)
+Redis:del("rooga1"..msg.sender_id.user_id)
+Redis:del("rahr1"..msg.sender_id.user_id)
+Redis:del("rahrr1"..msg.sender_id.user_id)
+else
+bot.sendText(msg.chat_id,msg.id, "⇜ الخلع للزوجات فقط","md",true)
+end
+else
+bot.sendText(msg.chat_id,msg.id, "⇜ انت ما مزوج ","md",true)
+end
+end
+if text == 'مراهنه' or text == 'مراهنة' then
+bot.sendText(msg.chat_id,msg.id, "استعمل الامر هكذا :\n\n`مراهنه` المبلغ","md",true)
+end
+if text and text:match('^مراهنه (.*)$') or text and text:match('^مراهنة (.*)$') then
+local UserName = text:match('^مراهنه (.*)$') or text:match('^مراهنة (.*)$')
+krses = tonumber(Redis:get("kreednum"..msg.sender_id.user_id))
+if Redis:get("kreed"..msg.sender_id.user_id) and tonumber(ballanceed) > 5000000 then
+return bot.sendText(msg.chat_id,msg.id, "⇜ عليك قرض بقيمة "..krses.." جنيه 💵 \nقم بسداده بالامر `تسديد القرض` ","md",true)
+end
+local coniss = coin(UserName)
+ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+if tonumber(ballancee) < tonumber(coniss) then
+return bot.sendText(msg.chat_id,msg.id, "⇜ فلوسك متكفيش \n✦","md",true)
+end
+Redis:del(KOIA..'List_rhan'..msg.chat_id)  
+Redis:set(KOIA.."playerrhan"..msg.chat_id,msg.sender_id.user_id)
+Redis:set(KOIA.."playercoins"..msg.chat_id..msg.sender_id.user_id,coniss)
+Redis:set(KOIA.."raeahkam"..msg.chat_id,msg.sender_id.user_id)
+Redis:sadd(KOIA..'List_rhan'..msg.chat_id,msg.sender_id.user_id)
+Redis:setex(KOIA.."Start_rhan"..msg.chat_id,3600,true)
+Redis:set(KOIA.."allrhan"..msg.chat_id..12345 , coniss)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+rehan = tonumber(ballancee) - tonumber(coniss)
+Redis:set("boob"..msg.sender_id.user_id , rehan)
+return bot.sendText(msg.chat_id,msg.id,"• تم بدء المراهنة وتم تسجيلك \n• اللي عاوز يشارك يرسل ( انا والمبلغ ) .","md",true)
+end
+if text == 'نعم' and Redis:get(KOIA.."Witting_Startrhan"..msg.chat_id) then
+rarahkam = Redis:get(KOIA.."raeahkam"..msg.chat_id)
+if tonumber(rarahkam) == msg.sender_id.user_id then
+local list = Redis:smembers(KOIA..'List_rhan'..msg.chat_id) 
+if #list == 1 then 
+return bot.sendText(msg.chat_id,msg.id,"• عذراً لم يشارك احد بالرهان","md",true)  
+end 
+local UserName = list[math.random(#list)]
+local UserId_Info = bot.getUser(UserName)
+if UserId_Info.username and UserId_Info.username ~= "" then
+ls = '['..UserId_Info.first_name..'](tg://user?id='..UserName..')'
+else
+ls = '@['..UserId_Info.username..']'
+end
+benrahan = Redis:get(KOIA.."allrhan"..msg.chat_id..12345) or 0
+local ballancee = Redis:get("boob"..UserName) or 0
+rehan = tonumber(ballancee) + tonumber(benrahan)
+Redis:set("boob"..UserName , rehan)
+
+local rhan_users = Redis:smembers(KOIA.."List_rhan"..msg.chat_id)
+for k,v in pairs(rhan_users) do
+Redis:del(KOIA..'playercoins'..msg.chat_id..v)
+end
+Redis:del(KOIA..'allrhan'..msg.chat_id..12345) 
+Redis:del(KOIA..'playerrhan'..msg.chat_id) 
+Redis:del(KOIA..'raeahkam'..msg.chat_id) 
+Redis:del(KOIA..'List_rhan'..msg.chat_id) 
+Redis:del(KOIA.."Witting_Startrhan"..msg.chat_id)
+Redis:del(KOIA.."Start_rhan"..msg.chat_id)
+local ballancee = Redis:get("boob"..UserName) or 0
+local convert_mony = string.format("%.0f",benrahan)
+local convert_monyy = string.format("%.0f",ballancee)
+return bot.sendText(msg.chat_id,msg.id,'⇜ فاز '..ls..' بالرهان 🎊\nالمبلغ : '..convert_mony..' جنيه 💵\nرصيدك حاليا : '..convert_monyy..' جنيه 💵\n✦',"md",true)
+end
+end
+if text == 'كنز' then
+ballanceed = Redis:get("boob"..msg.sender_id.user_id) or 0
+krses = tonumber(Redis:get("kreednum"..msg.sender_id.user_id))
+if Redis:get("kreed"..msg.sender_id.user_id) and tonumber(ballanceed) > 5000000 then
+return bot.sendText(msg.chat_id,msg.id, "⇜ عليك قرض بقيمة "..krses.." جنيه 💵 \nقم بسداده بالامر `تسديد القرض` ","md",true)
+end
+local F_Name = bot.getUser(msg.sender_id.user_id).first_name
+Redis:set(msg.sender_id.user_id.."first_name:", F_Name)
+if Redis:sismember("booob",msg.sender_id.user_id) then
+if Redis:ttl("yiioooo" .. msg.sender_id.user_id) >= 60 then
+local time = Redis:ttl("yiioooo" .. msg.sender_id.user_id)
+return bot.sendText(msg.chat_id,msg.id,"⇜ انت لسه باحث عن كنز دلوقت استنى ( "..time.." دقيقة )","md",true)
+end
+local Textinggt = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22","23",}
+local Descriptioont = Textinggt[math.random(#Textinggt)]
+local ban = bot.getUser(msg.sender_id.user_id)
+if ban.first_name then
+neews = "["..ban.first_name.."](tg://user?id="..ban.id..")"
+else
+neews = " لا يوجد "
+end
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+if Descriptioont == "1" then
+local knez = ballancee + 40000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : قطعة اثرية 🗳\nسعره : 40000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioont == "2" then
+local knez = ballancee + 35000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : حجر التلي جودي 💎\nسعره : 35000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioont == "3" then
+local knez = ballancee + 10000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : لباس بيبيتك 🥻\nسعره : 10000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioont == "4" then
+local knez = ballancee + 23000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : عصى سحرية 🪄\nسعره : 23000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioont == "5" then
+local knez = ballancee + 8000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : جوال نوكيا 📱\nسعره : 8000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioont == "6" then
+local knez = ballancee + 27000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : صدف 🏝\nسعره : 27000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioont == "7" then
+local knez = ballancee + 18000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : ابريق صدئ ⚗️\nسعره : 18000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioont == "8" then
+local knez = ballancee + 100000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : قناع ماسك 🗿\nسعره : 100000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioont == "9" then
+local knez = ballancee + 50000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : ذهب من خالتك 💰\nسعره : 50000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioont == "10" then
+local knez = ballancee + 36000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : مصباح فضي 🔦\nسعره : 36000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioont == "11" then
+local knez = ballancee + 29000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : لوحة نحاسية 🌇\nسعره : 29000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioont == "12" then
+local knez = ballancee + 1000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : جوارب قديمة 🧦\nسعره : 1000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioont == "13" then
+local knez = ballancee + 16000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : اناء فخاري ⚱️\nسعره : 16000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioont == "14" then
+local knez = ballancee + 12000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : خوذة محارب 🪖\nسعره : 12000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioont == "15" then
+local knez = ballancee + 19000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : سيف بليتش 🗡\nسعره : 19000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioont == "16" then
+local knez = ballancee + 14000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : مكناسه نضفو بيها لجروب 🧹\nسعره : 14000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioont == "17" then
+local knez = ballancee + 26000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : فأس ارطغرل 🪓\nسعره : 26000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioont == "18" then
+local knez = ballancee + 22000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : بندقية 🔫\nسعره : 22000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioont == "19" then
+local knez = ballancee + 11000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : كبريت ناري 🪔\nسعره : 11000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioont == "20" then
+local knez = ballancee + 33000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : فرو ثعلب 🦊\nسعره : 33000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioont == "21" then
+local knez = ballancee + 40000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : جلد تمساح 🐊\nسعره : 40000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioont == "22" then
+local knez = ballancee + 17000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : باقة ورود 💐\nسعره : 17000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioont == "23" then
+local Textinggtt = {"1", "2",}
+local Descriptioontt = Textinggtt[math.random(#Textinggtt)]
+if Descriptioontt == "1" then
+local knez = ballancee + 17000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : باقة ورود 💐\nسعره : 17000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioontt == "2" then
+local Textinggttt = {"1", "2",}
+local Descriptioonttt = Textinggttt[math.random(#Textinggttt)]
+if Descriptioonttt == "1" then
+local knez = ballancee + 40000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : جلد تمساح 🐊\nسعره : 40000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+elseif Descriptioonttt == "2" then
+local knez = ballancee + 10000000
+Redis:set("boob"..msg.sender_id.user_id , knez)
+local ballancee = Redis:get("boob"..msg.sender_id.user_id) or 0
+local convert_mony = string.format("%.0f",ballancee)
+bot.sendText(msg.chat_id,msg.id,""..neews.." لقد وجدت كنز\nالكنز : حقيبة محاسب البنك 💼\nسعره : 10000000 جنيه 💵\nرصيدك حاليا : "..convert_mony.." جنيه 💵\n✦","md",true)
+Redis:setex("yiioooo" .. msg.sender_id.user_id,1800, true)
+end
+end
+end
+else
+bot.sendText(msg.chat_id,msg.id, "⇜ معندكش حساب بنكي ارسل ↢ ( `انشاء حساب بنكي` )","md",true)
+end
+end
 
 if text and Redis:get(black..msg.chat_id..msg.sender.user_id.."txtrtb") then
 local balance = Redis:get(black.."boob"..msg.sender.user_id)
@@ -14562,7 +15648,7 @@ end
 local txx = " قائمه الكلمات المستبدله \n"
 for k,v in pairs(list) do 
 cmdd = Redis:get(black.."Word:Replace"..v)
-txx = txx..k.." - "..v.." ➢➢ "..cmdd.."\n"
+txx = txx..k.." - "..v.." ➢ "..cmdd.."\n"
 end
 LuaTele.sendText(msg_chat_id,msg_id,txx)
 end
@@ -15046,14 +16132,14 @@ data = {
 }
 }
 return send(msg_chat_id,msg_id, [[*
-⌯ توجد ➢ 6 اوامر في البوت
+⌯ توجد ↜ 6 اوامر في البوت
 •━═━═━𝐓𝐄𝐋𝐄𝐆𝐎𝐃═━═━•
-⌯ 1 ➢ اوامر الحمايه
-⌯ 2 ➢ اوامر الادمنيه
-⌯ 3 ➢ اوامر المدراء
-⌯ 4 ➢ اوامر المنشئين
-⌯ 5 ➢ اوامر مطورين البوت
-⌯ 6 ➢ اوامر التسلية البوت
+⌯ 1 ↜ اوامر الحمايه
+⌯ 2 ↜ اوامر الادمنيه
+⌯ 3 ↜ اوامر المدراء
+⌯ 4 ↜ اوامر المنشئين
+⌯ 5 ↜ اوامر مطورين البوت
+⌯ 6 ↜ اوامر التسلية البوت
 *]],"md",false, false, false, false, reply_markup)
 elseif text == 'م1' then
 if not msg.Admin then
@@ -15888,6 +16974,9 @@ end
 if tonumber(Message_Reply.sender.user_id) == tonumber(5372193406) then
 return LuaTele.sendText(msg_chat_id,msg_id,"*يسطا دا مبرمج السورس ممكن يفشخني انا وانت 😂😞*","md",true)  
 end
+if tonumber(Message_Reply.sender.user_id) == tonumber(5150439701) then
+return LuaTele.sendText(msg_chat_id,msg_id,"*يسطا دا سيف اخو مبرمج السورس ممكن يفشخني انا وانت 😂😞*","md",true) 
+end
 if tonumber(Message_Reply.sender.user_id) == tonumber(black) then
 return LuaTele.sendText(msg_chat_id,msg_id,"*يخربيت الضحك عاوز يقتل البوت 🙂😂😂*","md",true)  
 end
@@ -15914,6 +17003,9 @@ return LuaTele.sendText(msg_chat_id,msg_id,"*⏏️| انت عبيط يسطا د
 end
 if tonumber(Message_Reply.sender.user_id) == tonumber(5372193406) then
 return LuaTele.sendText(msg_chat_id,msg_id,"*🚫| حبيبي دا المبرمج صلاح مش بيتف عليه*","md",true)  
+end
+if tonumber(Message_Reply.sender.user_id) == tonumber(5150439701) then
+return LuaTele.sendText(msg_chat_id,msg_id,"*يسطا دا سيف اخو مبرمج السورس ممكن يفشخني انا وانت 😂😞*","md",true) 
 end
 if tonumber(Message_Reply.sender.user_id) == tonumber(black) then
 return LuaTele.sendText(msg_chat_id,msg_id,"*يخربيت الضحك عاوز يتف علي البوت 🙂😂😂*","md",true)  
@@ -16228,13 +17320,13 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '𝟏 ➢ { 👊 }', data = '/Mahibes1'}, {text = '𝟐 ➢ { 👊 }', data = '/Mahibes2'}, 
+{text = '𝟏 ↜ { 👊 }', data = '/Mahibes1'}, {text = '𝟐 ↜ { 👊 }', data = '/Mahibes2'}, 
 },
 {
-{text = '𝟑 ➢ { 👊 }', data = '/Mahibes3'}, {text = '𝟒 ➢ { 👊 }', data = '/Mahibes4'}, 
+{text = '𝟑 ↜ { 👊 }', data = '/Mahibes3'}, {text = '𝟒 ↜ { 👊 }', data = '/Mahibes4'}, 
 },
 {
-{text = '𝟓 ➢ { 👊 }', data = '/Mahibes5'}, {text = '𝟔 ➢ { 👊 }', data = '/Mahibes6'}, 
+{text = '𝟓 ↜ { 👊 }', data = '/Mahibes5'}, {text = '𝟔 ↜ { 👊 }', data = '/Mahibes6'}, 
 },
 }
 }
@@ -16378,7 +17470,7 @@ local Num = Redis:get(black.."Num:Add:Games"..msg.chat_id..msg.sender.user_id) o
 if Num == 0 then 
 return send(msg_chat_id,msg_id, "⌯ لم تفز بأي نقطه ","md",true)  
 else
-return send(msg_chat_id,msg_id, "⌯ عدد النقاط التي ربحتها *➢ "..Num.." *","md",true)  
+return send(msg_chat_id,msg_id, "⌯ عدد النقاط التي ربحتها *↜ "..Num.." *","md",true)  
 end
 end
 
@@ -16435,25 +17527,25 @@ if text == "تفعيل سمسمي" then
 if not msg.Manger then
 return send(msg_chat_id,msg_id,'\n*⌯ هذا الامر يخص  '..Controller_Num(6)..' * ',"md",true)  
 end
-Redis:del(black.."smsme"..msg.chat_id)
+Redis:del(KOIA.."smsme"..msg.chat_id)
 send(msg.chat_id,msg.id,"⌯ تم تفعيل سمسمي")
 end
 if text == "تعطيل سمسمي" then
 if not msg.Manger then
 return send(msg_chat_id,msg_id,'\n*⌯ هذا الامر يخص  '..Controller_Num(6)..' * ',"md",true)  
 end
-Redis:set(black.."smsme"..msg.chat_id,true)
+Redis:set(KOIA.."smsme"..msg.chat_id,true)
 send(msg.chat_id,msg.id,"⌯ تم تعطيل سمسمي")
 end
-if not Redis:get(black.."smsme"..msg.chat_id) then
+if not Redis:get(KOIA.."smsme"..msg.chat_id) then
 if text and msg.reply_to_message_id ~= 0 then
-local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
-if Message_Reply and Message_Reply.sender and tonumber(Message_Reply.sender.user_id) == tonumber(black) then
+local Message_Reply = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
+if Message_Reply and Message_Reply.sender_id and tonumber(Message_Reply.sender_id.user_id) == tonumber(KOIA) then
 ai_api = https.request("https://api-sv2.simsimi.net/v2/?text="..URL.escape(text).."&lc=ar&cf=false")
 ai_decode = JSON.decode(ai_api)
 ai_text = ai_decode['success']
 if ai_text:match("(.*)سناب(.*)") or ai_text:match("(.*)واتس(.*)") or ai_text:match("(.*)انستا(.*)") or ai_text:match("(.*)رقمي(.*)") or ai_text:match("(%d+)") or ai_text:match("(.*)متابعه(.*)") or ai_text:match("(.*)تابعني(.*)") or ai_text:match("(.*)قناتي(.*)") or ai_text:match("(.*)قناه(.*)") or ai_text:match("(.*)يوتيوب(.*)") then
-txx = "لا افهمك"
+txx = "مش فاهم وضح اكتر"
 else
 txx = ai_text
 end
@@ -16600,7 +17692,7 @@ local CmdStart = '*\n⌯ أهلآ بك في بوت '..(Redis:get(black.."Name:Bo
 '\n⌯ اضف البوت الى مجموعتك'..
 '\n⌯ ارفعه ادمن مشرف'..
 '\n⌯ ارسل كلمة { تفعيل } ليتم تفعيل الجروب'..
-'\n⌯ مطور البوت ➢ {'..UserSudo..'}*'
+'\n⌯ مطور البوت ↜ {'..UserSudo..'}*'
 local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
@@ -16691,7 +17783,10 @@ data = {
 {text = '‹ تنظيف المجموعات ›',type = 'text'},{text = '‹ تنظيف المشتركين ›', type = 'text'},
 },
 {
-{text = '‹ جلب النسخه الاحتياطيه ›',type = 'text'},{text = 'الجروبات ⌯',type = 'text'},
+{text = '‹ جلب النسخه الاحتياطيه ›',type = 'text'},{text = '‹ الجروبات ›',type = 'text'},
+},
+{
+{text = '‹ تفعيل جلب النسخه التلقائيه ›',type = 'text'} 
 },
 {
 {text = '‹ اضف رد عام ›',type = 'text'},{text = '‹ حذف رد عام ›', type = 'text'},
@@ -16811,7 +17906,7 @@ data = {
 },
 }
 }
-return send(msg_chat_id,msg_id,"مطور السورس ➢ @"..chdevolper.."","html",true, false, false, true, reply_markup)
+return send(msg_chat_id,msg_id,"مطور السورس ↜ @"..chdevolper.."","html",true, false, false, true, reply_markup)
 end
 if text == '‹ قناة السورس ›' then
 local reply_markup = LuaTele.replyMarkup{
@@ -16822,7 +17917,7 @@ data = {
 },
 }
 }
-return send(msg_chat_id,msg_id,"قناة السورس️ ➢ @"..chsource.."","html",true, false, false, true, reply_markup)
+return send(msg_chat_id,msg_id,"قناة السورس️ ↜ @"..chsource.."","html",true, false, false, true, reply_markup)
 end
 if text == '‹ حذف كليشة ستارت ›' then 
 if not msg.Devss then 
@@ -17600,7 +18695,7 @@ end
 File_Bot_Run(Message_Edit,Message_Edit)
 if tonumber(Message_Edit.sender.user_id) == 5372193406 then
 data.The_Controller = 1
-elseif tonumber(Message_Edit.sender.user_id) == 5372193406 then
+elseif tonumber(Message_Edit.sender.user_id) == 5678243429 then
 data.The_Controller = 1
 elseif The_ControllerAll(Message_Edit.sender.user_id) == true then  
 data.The_Controller = 1
@@ -17781,7 +18876,7 @@ end
 end
 if tonumber(IdUser) == 5372193406 then
 data.The_Controller = 1
-elseif tonumber(IdUser) == 5372193406 then
+elseif tonumber(IdUser) == 5678243429 then
 data.The_Controller = 1
 elseif The_ControllerAll(IdUser) == true then  
 data.The_Controller = 1
@@ -17926,9 +19021,9 @@ local GetMahibes = Text:match('/Mahibes(%d+)')
 local NumMahibes = math.random(1,6)
 if tonumber(GetMahibes) == tonumber(NumMahibes) then
 Redis:incrby(black.."Num:Add:Games"..ChatId..IdUser, 1)  
-MahibesText = '*⌯الف مبروك حظك حلو اليوم\n⌯ فزت ويانه وطلعت المحيبس بل عظمه رقم {'..NumMahibes..'}*'
+MahibesText = '*⌯الف مبروك حظك حلو اليوم\n⌯ فزت معانا وطلعت المحيبس بل عظمه رقم {'..NumMahibes..'}*'
 else
-MahibesText = '*⌯للاسف لقد خسرت المحيبس بالعظمه رقم {'..NumMahibes..'}\n⌯ جرب حضك ويانه مره اخره*'
+MahibesText = '*⌯للاسف لقد خسرت المحيبس بالعظمه رقم {'..NumMahibes..'}\n⌯ جرب حضك معانا مره اخره*'
 end
 if NumMahibes == 1 then
 Mahibes1 = '🤚' else Mahibes1 = '👊'
@@ -19194,14 +20289,14 @@ data = {
 }
 }
 local TextHelp = [[*
-⌯ توجد ➢ 6 اوامر في البوت
+⌯ توجد ✜ 6 اوامر في البوت
 •━═━═━𝐓𝐄𝐋𝐄𝐆𝐎𝐃═━═━•
-⌯ 1 ➢ اوامر الحمايه
-⌯ 2 ➢ اوامر الادمنيه
-⌯ 3 ➢ اوامر المدراء
-⌯ 4 ➢ اوامر المنشئين
-⌯ 5 ➢ اوامر مطورين البوت
-⌯ 6 ➢ اوامر التسلية البوت
+⌯ 1 ✜ اوامر الحمايه
+⌯ 2 ✜ اوامر الادمنيه
+⌯ 3 ✜ اوامر المدراء
+⌯ 4 ✜ اوامر المنشئين
+⌯ 5 ✜ اوامر مطورين البوت
+⌯ 6 ✜ اوامر التسلية البوت
 *]]
 edit(ChatId,Msg_id,TextHelp, 'md', true, false, reply_markup)
 end
@@ -19792,6 +20887,13 @@ Redis:del(black.."Status:IdPhoto"..ChatId)
 local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = '- رجوع', data =UserId..'/'.. 'listallAddorrem'},},}}
 edit(ChatId,Msg_id,Reply_Status(IdUser,"⌯ تم تعطيل امر الايدي بالصوره").unLock, 'md', true, false, reply_markup)
 end
+elseif Text and Text:match('(%d+)/unmute_kicknum') and data.Creator then
+local UserId = Text:match('(%d+)/unmute_kicknum')
+if tonumber(IdUser) == tonumber(UserId) then
+Redis:set(black.."spammkick"..ChatId,true) 
+local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = '- رجوع', data =UserId..'/'.. 'listallAddorrem'},},}}
+edit(ChatId,Msg_id,Reply_Status(IdUser,"⌯ تم تعطيل امر منع التصفيه").unLock, 'md', true, false, reply_markup)
+end
 elseif Text and Text:match('(%d+)/unmute_ryple') then
 local UserId = Text:match('(%d+)/unmute_ryple')
 if tonumber(IdUser) == tonumber(UserId) then
@@ -19862,6 +20964,13 @@ if tonumber(IdUser) == tonumber(UserId) then
 Redis:set(black.."Status:IdPhoto"..ChatId,true) 
 local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = '- رجوع', data =UserId..'/'.. 'listallAddorrem'},},}}
 edit(ChatId,Msg_id,Reply_Status(IdUser,"⌯ تم تفعيل امر الايدي بالصوره").unLock, 'md', true, false, reply_markup)
+end
+elseif Text and Text:match('(%d+)/mute_kicknum') and data.SuperCreator then
+local UserId = Text:match('(%d+)/mute_kicknum')
+if tonumber(IdUser) == tonumber(UserId) then
+Redis:del(black.."spammkick"..ChatId)
+local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = '- رجوع', data =UserId..'/'.. 'listallAddorrem'},},}}
+edit(ChatId,Msg_id,Reply_Status(IdUser,"⌯ تم تفعيل امر منع التصفيه").unLock, 'md', true, false, reply_markup)
 end
 elseif Text and Text:match('(%d+)/mute_ryple') then
 local UserId = Text:match('(%d+)/mute_ryple')
@@ -20154,6 +21263,9 @@ data = {
 {text = 'تعطيل اطردني', data = IdUser..'/'.. 'unmute_kickme'},{text = 'تفعيل اطردني', data = IdUser..'/'.. 'mute_kickme'},
 },
 {
+{text = 'تعطيل منع التصفيه', data = IdUser..'/'.. 'unmute_kicknum'},{text = 'تفعيل منع التصفيه', data = IdUser..'/'.. 'mute_kicknum'},
+},
+{ 
 {text = 'القائمه الرئيسيه', data = IdUser..'/helpall'},
 },
 {
