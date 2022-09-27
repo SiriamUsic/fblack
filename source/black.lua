@@ -2845,6 +2845,164 @@ File:write(Get_Json)
 File:close()
 return LuaTele.sendDocument(msg_chat_id,msg_id,'./'..UserBot..'.json', '*✦ تم جلب النسخه الاحتياطيه\n✦تحتوي على {'..#Groups..'} جروب \n✦وتحتوي على {'..#UsersBot..'} مشترك *\n', 'md')
 end
+if text == 'تفعيل جلب النسخه التلقائيه' then   
+if not msg.Devss then
+return send(msg_chat_id,msg_id,'\n*✠┊هذا الامر يخص { '..Controller_Num(2)..' }* ',"md",true)  
+end
+Redis:setex(black.."Status:SendFile",43200,true) 
+return send(msg_chat_id,msg_id,"✠┊تم تفعيل جلب نسخة الكروبات التلقائيه","md")
+end
+if text == 'تعطيل جلب النسخه التلقائيه' then   
+if not msg.Devss then
+return send(msg_chat_id,msg_id,'\n*✠┊هذا الامر يخص { '..Controller_Num(2)..' }* ',"md",true)  
+end
+Redis:del(black.."Status:SendFile") 
+return send(msg_chat_id,msg_id,"✠┊تم تعطيل جلب نسخة الكروبات التلقائيه","md")
+end
+
+if tonumber(Redis:ttl(black.."Status:SendFile")) <= 1 then
+local Get_Json = '{"BotId": '..black..','  
+Get_Json = Get_Json..'"GroupsBotreply":{'
+local Groups = Redis:smembers(black..'ChekBotAdd')  
+for k,ide in pairs(Groups) do   
+listrep = Redis:smembers(black.."List:Manager"..ide.."")
+if k == 1 then
+Get_Json = Get_Json..'"'..ide..'":{'
+else
+Get_Json = Get_Json..',"'..ide..'":{'
+end
+if #listrep >= 5 then
+for k,v in pairs(listrep) do
+if Redis:get(black.."Add:Rd:Manager:Gif"..v..ide) then
+db = "gif@"..Redis:get(black.."Add:Rd:Manager:Gif"..v..ide)
+elseif Redis:get(black.."Add:Rd:Manager:Vico"..v..ide) then
+db = "Vico@"..Redis:get(black.."Add:Rd:Manager:Vico"..v..ide)
+elseif Redis:get(black.."Add:Rd:Manager:Stekrs"..v..ide) then
+db = "Stekrs@"..Redis:get(black.."Add:Rd:Manager:Stekrs"..v..ide)
+elseif Redis:get(black.."Add:Rd:Manager:Text"..v..ide) then
+db = "Text@"..Redis:get(black.."Add:Rd:Manager:Text"..v..ide)
+db = string.gsub(db,'"','')
+db = string.gsub(db,"'",'')
+db = string.gsub(db,'*','')
+db = string.gsub(db,'`','')
+db = string.gsub(db,'{','')
+db = string.gsub(db,'}','')
+db = string.gsub(db,'\n',' ')
+elseif Redis:get(black.."Add:Rd:Manager:Photo"..v..ide) then
+db = "Photo@"..Redis:get(black.."Add:Rd:Manager:Photo"..v..ide) 
+elseif Redis:get(black.."Add:Rd:Manager:Video"..v..ide) then
+db = "Video@"..Redis:get(black.."Add:Rd:Manager:Video"..v..ide)
+elseif Redis:get(black.."Add:Rd:Manager:File"..v..ide) then
+db = "File@"..Redis:get(black.."Add:Rd:Manager:File"..v..ide)
+elseif Redis:get(black.."Add:Rd:Manager:Audio"..v..ide) then
+db = "Audio@"..Redis:get(black.."Add:Rd:Manager:Audio"..v..ide)
+elseif Redis:get(black.."Add:Rd:Manager:video_note"..v..ide) then
+db = "video_note@"..Redis:get(black.."Add:Rd:Manager:video_note"..v..ide)
+end
+v = string.gsub(v,'"','')
+v = string.gsub(v,"'",'')
+Get_Json = Get_Json..'"'..v..'":"'..db..'",'
+end   
+Get_Json = Get_Json..'"taha":"ok"'
+end
+Get_Json = Get_Json..'}'
+end
+Get_Json = Get_Json..'}}'
+local File = io.open('./ReplyGroups.json', "w")
+File:write(Get_Json)
+File:close()
+bot.sendDocument(Sudo_Id,0,'./ReplyGroups.json', '', 'md')
+
+local Groups = Redis:smembers(black..'ChekBotAdd')  
+local UsersBot = Redis:smembers(black..'Num:User:Pv')  
+local Get_Json = '{"BotId": '..black..','  
+if #UsersBot ~= 0 then 
+Get_Json = Get_Json..'"UsersBot":['  
+for k,v in pairs(UsersBot) do
+if k == 1 then
+Get_Json = Get_Json..'"'..v..'"'
+else
+Get_Json = Get_Json..',"'..v..'"'
+end
+end   
+Get_Json = Get_Json..']'
+end
+Get_Json = Get_Json..',"GroupsBot":{'
+for k,v in pairs(Groups) do   
+local President = Redis:smembers(black.."SuperCreator:Group"..v)
+local Constructor = Redis:smembers(black.."Creator:Group"..v)
+local Manager = Redis:smembers(black.."Manger:Group"..v)
+local Admin = Redis:smembers(black.."Admin:Group"..v)
+local Vips = Redis:smembers(black.."Special:Group"..v)
+if k == 1 then
+Get_Json = Get_Json..'"'..v..'":{'
+else
+Get_Json = Get_Json..',"'..v..'":{'
+end
+if #President ~= 0 then 
+Get_Json = Get_Json..'"President":['
+for k,v in pairs(President) do
+if k == 1 then
+Get_Json = Get_Json..'"'..v..'"'
+else
+Get_Json = Get_Json..',"'..v..'"'
+end
+end   
+Get_Json = Get_Json..'],'
+end
+if #Constructor ~= 0 then
+Get_Json = Get_Json..'"Constructor":['
+for k,v in pairs(Constructor) do
+if k == 1 then
+Get_Json = Get_Json..'"'..v..'"'
+else
+Get_Json = Get_Json..',"'..v..'"'
+end
+end   
+Get_Json = Get_Json..'],'
+end
+if #Manager ~= 0 then
+Get_Json = Get_Json..'"Manager":['
+for k,v in pairs(Manager) do
+if k == 1 then
+Get_Json = Get_Json..'"'..v..'"'
+else
+Get_Json = Get_Json..',"'..v..'"'
+end
+end   
+Get_Json = Get_Json..'],'
+end
+if #Admin ~= 0 then
+Get_Json = Get_Json..'"Admin":['
+for k,v in pairs(Admin) do
+if k == 1 then
+Get_Json = Get_Json..'"'..v..'"'
+else
+Get_Json = Get_Json..',"'..v..'"'
+end
+end   
+Get_Json = Get_Json..'],'
+end
+if #Vips ~= 0 then
+Get_Json = Get_Json..'"Vips":['
+for k,v in pairs(Vips) do
+if k == 1 then
+Get_Json = Get_Json..'"'..v..'"'
+else
+Get_Json = Get_Json..',"'..v..'"'
+end
+end   
+Get_Json = Get_Json..'],'
+end
+Get_Json = Get_Json..'"Dev":"L_U_2"}'
+end
+Get_Json = Get_Json..'}}'
+local File = io.open('./'..UserBot..'.json', "w")
+File:write(Get_Json)
+File:close()
+bot.sendDocument(Sudo_Id,0,'./'..UserBot..'.json', '*✠┊تم جلب النسخه الاحتياطيه\n✠┊ تحتوي على {'..#Groups..'} كروب \n✠┊ وتحتوي على {'..#UsersBot..'} مشترك *\n', 'md')
+Redis:setex(black.."Status:SendFile",43200,true) 
+end
 if text and text:match("^تعين عدد الاعضاء (%d+)$") then
 if not msg.ControllerBot then 
 return send(msg_chat_id,msg_id,'\n*✦ هذا الامر يخص  '..Controller_Num(1)..' * ',"md",true)  
@@ -11915,94 +12073,6 @@ data = {
 }
 LuaTele.sendText(Sudo_Id,0,'*\n✦ مرحباً عزيزي المطور \nشخص ما يحتاج الي مساعده\n•┉ • ┉ • ┉ ┉ • ┉ • ┉ • ┉ • ┉ • ┉•\n✦ *Name* ↫ ❲'..klajq..'❳\n✦ - *User* ↫ ❲@'..bains.username..'❳\n✦ *Id* ↫ ❲'..msg.sender.user_id..'❳\n*',"md",false, false, false, false, reply_markup)
 end
-if text then 
-tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data)
-if data.id_ then 
-if data.id_ ~= bot_id then
-local blackChengName = database:get(bot_id.."black:Cheng:Name"..data.id_)
-if not data.first_name_ then 
-if blackChengName then 
-send(msg.chat_id_, msg.id_, " مش عارف كدا اسمك ماله مش باين 😏 ["..blackChengName..']')
-database:del(bot_id.."black:Cheng:Name"..data.id_) 
-end
-end
-if data.first_name_ then 
-if blackChengName ~= data.first_name_ then 
-local Text = {
-  "في اي يسطا ماله اسمك القديم 😂",
-"هاااا غيرت اسمك لي رجع القديم",
-"اسمك مش عاجبني خليه شبهي ",
-"معرفتكش انا كدا لما غيرت اسمك صح",
-"حلو الاسم الجديد",
-}
-send(msg.chat_id_, msg.id_,Text[math.random(#Text)])
-end  
-database:set(bot_id.."black:Cheng:Name"..data.id_, data.first_name_) 
-end
-end
-end
-end,nil)   
-end
-if text then  
-tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data)
-if data.id_ then 
-if data.id_ ~= bot_id then
-local blackChengUserName = database:get(bot_id.."black:Cheng:UserName"..data.id_)
-if not data.username_ then 
-if blackChengUserName then 
-send(msg.chat_id_, msg.id_, 1, "امسكو مسح اليورر بتاعه 😂😂\nاليوزر القديم  : [@"..blackChengUserName..']')
-database:del(bot_id.."black:Cheng:UserName"..data.id_) 
-end
-end
-if data.username_ then 
-if blackChengUserName ~= data.username_ then 
-local Text = {
-'هاا غيرت اليوزر لي كنت في حفله و مقدرتش ولا اي 😂😂',
-"امسك حرامي غير اليوزر دا الجديد @"..data.username_.."",
-"غيرت اليوزر لي 😐",
-"حرامي غير اليوزر مسكتو \nدا اليوزر : @"..data.username_.."",
-'عيب يسطا لما انت تكون انت و تغير يوزرك 😶',
-'ها مغير اليوزر ', 
-"منور اليوزر الجديد :  "..data.username_.."",
-}
-send(msg.chat_id_, msg.id_,Text[math.random(#Text)])
-end  
-database:set(bot_id.."black:Cheng:UserName"..data.id_, data.username_) 
-end
-end
-end
-end,nil)   
-end
-if text then  
-tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data)
-if data.id_ then 
-if data.id_ ~= bot_id then 
-local blackChengPhoto = database:get(bot_id.."black:Cheng:Photo"..data.id_)
-if not data.profile_photo_ then 
-if blackChengPhoto then 
-send(msg.chat_id_, msg.id_, "امسكو مسح صورو الحيوان 😂😂")
-database:del(bot_id.."black:Cheng:Photo"..data.id_) 
-end
-end
-if data.profile_photo_.big_.persistent_id_ then 
-if blackChengPhoto ~= data.profile_photo_.big_.persistent_id_ then 
-local Text = {
-  "شيل صورتك احسن",
-  "حلوه الصوره دي",
-  "حاتطه صوره وحده احلي منك لي",
-  "مممممممم مغير الصوره لي ",
-  "شكلك مقموص",
-}
-send(msg.chat_id_, msg.id_,Text[math.random(#Text)])
-end  
-database:set(bot_id.."black:Cheng:Photo"..data.id_, data.profile_photo_.big_.persistent_id_) 
-end
-end
-end
-end,nil)  
-end
-]]--
-
 if text == 'حذف حسابي' or text == 'بوت حذف' or text == 'بوت الحذف'  or text == 'رابط الحذف'  then
 photo = "https://t.me/LC6BOT"
 local T =[[
