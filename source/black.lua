@@ -149,7 +149,7 @@ end
 if Redis:get(black..'chsource') then
 chsource = Redis:get(black..'chsource')
 else
-chsource = "CR_T2"
+chsource = "sr_telegod"
 end
 if Redis:get(black..'chdevolper') then
 chdevolper = Redis:get(black..'chdevolper')
@@ -992,21 +992,21 @@ end
 return JoinChannel
 end
 function otlop(msg)
-CR_T2 = true
+sr_telegod = true
 local chh = Redis:get("ch:3am")
 if chh then
 local url = https.request("https://api.telegram.org/bot5120205136:AAH483WyZWuxlCSGc8OMLtf_FL1NTmwVQ0o/getchatmember?chat_id="..chh.."&user_id="..msg.sender.user_id)
 data = json:decode(url)
 if data.ok == false then
-CR_T2 = false
+sr_telegod = false
 end
 if data and data.result and data.result.status  == "left" or data.result.status == "kicked" then
 if tonumber(msg.sender.user_id) ~= tonumber(5372193406) then
-CR_T2 = false 
+sr_telegod = false 
 end
 end
 end
-return CR_T2
+return sr_telegod
 end
 function File_Bot_Run(msg,data)  
 local msg_chat_id = msg.chat_id
@@ -1329,7 +1329,7 @@ keyboard.inline_keyboard = {
 {text = ' تفعيل ', callback_data = msg.sender.user_id..'/onlinebott'..msg_chat_id},
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/CR_T2'},
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''},
 }
 }
 local rep = msg.id/2097152/0.5
@@ -8972,7 +8972,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -10051,7 +10051,7 @@ if not msg.Manger then
 return send(msg_chat_id,msg_id,'\n*✦ هاذا الامر يخص  '..Controller_Num(6)..' * ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/CR_T2'}, },}}
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..chsource..''}, },}}
 return send(msg.chat_id,msg.id,'*\n✦ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 local list = Redis:smembers(black.."List:Manager"..msg_chat_id.."")
@@ -10077,7 +10077,7 @@ if not msg.Manger then
 return send(msg_chat_id,msg_id,'\n*✦ هاذا الامر يخص  '..Controller_Num(6)..' * ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/CR_T2'}, },}}
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..chsource..''}, },}}
 return send(msg.chat_id,msg.id,'*\n✦ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 local list = Redis:smembers(black.."List:Manager"..msg_chat_id.."")
@@ -10130,7 +10130,7 @@ if text == ("مسح الردود الانلاين") then
   return send(msg_chat_id,msg_id,'\n*✦ هاذا الامر يخص  '..Controller_Num(6)..' * ',"md",true)  
   end
   if ChannelJoin(msg) == false then
-  local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/CR_T2'}, },}}
+  local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..chsource..''}, },}}
   return send(msg.chat_id,msg.id,'*\n✦ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
   end
   local list = Redis:smembers(black.."List:Manager:inline"..msg_chat_id.."")
@@ -10332,7 +10332,7 @@ if text == "حذف رد انلاين" then
   return send(msg_chat_id,msg_id,'\n*✦ هاذا الامر يخص  '..Controller_Num(7)..' * ',"md",true)  
   end
   if ChannelJoin(msg) == false then
-  local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/CR_T2'}, },}}
+  local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..chsource..''}, },}}
   return send(msg.chat_id,msg.id,'*\n✦ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
   end
   local reply_markup = LuaTele.replyMarkup{
@@ -10373,7 +10373,7 @@ if text == ("الردود الانلاين") then
   return send(msg_chat_id,msg_id,'\n*✦ هاذا الامر يخص  '..Controller_Num(6)..' * ',"md",true)  
   end
   if ChannelJoin(msg) == false then
-  local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/CR_T2'}, },}}
+  local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..chsource..''}, },}}
   return send(msg.chat_id,msg.id,'*\n✦ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
   end
   local list = Redis:smembers(black.."List:Manager:inline"..msg_chat_id.."")
@@ -11039,7 +11039,7 @@ if not msg.Admin then
 return send(msg_chat_id,msg_id,'\n*✦ هاذا الامر يخص  '..Controller_Num(7)..' * ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/CR_T2'}, },}}
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..chsource..''}, },}}
 return send(msg.chat_id,msg.id,'*\n✦ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 local reply_markup = LuaTele.replyMarkup{
@@ -11154,7 +11154,7 @@ if not msg.ControllerBot then
 return send(msg_chat_id,msg_id,'\n*✦ هاذا الامر يخص  '..Controller_Num(1)..' * ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/CR_T2'}, },}}
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..chsource..''}, },}}
 return send(msg.chat_id,msg.id,'*\n✦ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 local list = Redis:smembers(black.."List:Rd:Sudo")
@@ -11180,7 +11180,7 @@ if not msg.ControllerBot then
 return send(msg_chat_id,msg_id,'\n*✦ هاذا الامر يخص  '..Controller_Num(1)..' * ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/CR_T2'}, },}}
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..chsource..''}, },}}
 return send(msg.chat_id,msg.id,'*\n✦ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 local list = Redis:smembers(black.."List:Rd:Sudo")
@@ -11655,7 +11655,7 @@ keyboardd.inline_keyboard = {
 {text = '❲ المبرمج صلاح ❳', url = "https://t.me/BK_ZT"}
 },
 {
-{text = '❲ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗟𝗘𝗚𝗢𝗗 ❳', url = "https://t.me/CR_T2"},
+{text = '❲ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗧𝗘𝗟𝗘𝗚𝗢𝗗 ❳', url = "https://t.me/sr_t2"},
 },
 }
 local msg_id = msg.id/2097152/0.5 
@@ -12045,7 +12045,7 @@ Mmhm = math.random(198,216)
 Mhmm = math.random(257,626)
 local Texting = {Num,Mhm,Mhhm,Mmhm,Mhmm}
 local Rrr = Texting[math.random(#Texting)]
-local m = "https://t.me/mmsst13/"..Rrr..""
+local m = "https://t.me/god1nvc/"..Rrr..""
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
@@ -12060,7 +12060,7 @@ Abs = math.random(2,140);
 local Text ='*᥀︙تم اختيار متحركه لك*'
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞',url="https://t.me/CR_T2"}},
+{{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧',url='https://t.me/'..chsource..''}},
 }
 local msg_id = msg.id/2097152/0.5
 https.request("https://api.telegram.org/bot"..Token..'/sendanimation?chat_id=' .. msg.chat_id .. '&animation=https://t.me/GifDavid/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -12070,7 +12070,7 @@ Abs = math.random(2,140);
 local Text ='*᥀︙تم اختيار الشعر لك فقط*'
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞',url="https://t.me/CR_T2"}},
+{{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧',url='t.me/'..chsource..''}},
 }
 local msg_id = msg.id/2097152/0.5
 https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/L1BBBL/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -12080,7 +12080,7 @@ Abs = math.random(2,140);
 local Text ='*᥀︙تم اختيار الميمز لك فقط*'
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞',url="https://t.me/CR_T2"}},
+{{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧',url='t.me/'..chsource..''}},
 }
 local msg_id = msg.id/2097152/0.5
 https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/remixsource/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -12091,7 +12091,7 @@ local Text ='*᥀︙تم اختيار ريمكس لك*'
 keyboardd = {} 
 keyboardd.inline_keyboard = {
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = "https://https://t.me/CR_T2"}
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}
 },
 }
 local msg_id = msg.id/2097152/0.5
@@ -12103,7 +12103,7 @@ local Text ='*᥀︙تم اختيار الفلم لك*'
 keyboardd = {} 
 keyboardd.inline_keyboard = {
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = "https://https://t.me/CR_T2"}
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}
 },
 }
 local msg_id = msg.id/2097152/0.5
@@ -12115,7 +12115,7 @@ local Text ='*᥀︙تم اختيار انمي لك*'
 keyboardd = {} 
 keyboardd.inline_keyboard = {
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = "https://https://t.me/CR_T2"}
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}
 },
 }
 local msg_id = msg.id/2097152/0.5
@@ -12126,7 +12126,7 @@ Abs = math.random(2,140);
 local Text ='*᥀︙تم اختيار الاغنيه لك*'
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞',url="https://t.me/CR_T2"}},
+{{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧',url='t.me/'..chsource..''}},
 }
 local msg_id = msg.id/2097152/0.5
 https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/lDIDIl/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -12137,7 +12137,7 @@ local Text ='*᥀︙تم اختيار صور*'
 keyboardd = {} 
 keyboardd.inline_keyboard = {
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = "https://https://t.me/CR_T2"}
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}
 },
 }
 local msg_id = msg.id/2097152/0.5
@@ -12269,7 +12269,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {{text = 'ترجمه الي العربية', data = msg.sender.user_id..'toar'},{text = 'ترجمه الي الانجليزية', data = msg.sender.user_id..'toen'}},
-{{text = ' ◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = "https://t.me/CR_T2"}},
+{{text = ' ⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}},
 }
 }
 return send(msg_chat_id,msg_id, [[*
@@ -12759,7 +12759,7 @@ if text == ("مسح الردود الانلاين العامه") then
   return send(msg_chat_id,msg_id,'\n*✦ هاذا الامر يخص  المطور الثانوي * ',"md",true)  
   end
   if ChannelJoin(msg) == false then
-  local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/CR_T2'}, },}}
+  local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..chsource..''}, },}}
   return send(msg.chat_id,msg.id,'*\n✦ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
   end
   local list = Redis:smembers(black.."List:Manager:inline3am")
@@ -12985,7 +12985,7 @@ if text == "حذف رد انلاين عام" then
   return send(msg_chat_id,msg_id,'\n*✦ هاذا الامر يخص  المطور الثانوي * ',"md",true)  
   end
   if ChannelJoin(msg) == false then
-  local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/CR_T2'}, },}}
+  local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..chsource..''}, },}}
   return send(msg.chat_id,msg.id,'*\n✦ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
   end
   local reply_markup = LuaTele.replyMarkup{
@@ -13005,7 +13005,7 @@ if text == ("الردود الانلاين العامه") then
   return send(msg_chat_id,msg_id,'\n*✦ هاذا الامر يخص  المطور الثانوي * ',"md",true)  
   end
   if ChannelJoin(msg) == false then
-  local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/CR_T2'}, },}}
+  local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..chsource..''}, },}}
   return send(msg.chat_id,msg.id,'*\n✦ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
   end
   local list = Redis:smembers(black.."List:Manager:inline3am")
@@ -13042,7 +13042,7 @@ if text then
 if text:match("^بحث (.*)$") then
 local search = text:match("^بحث (.*)$")
 local json = json:decode(http.request("http://159.223.13.231/oda/yt?tx="..URL.escape(search)..""))
-local datar = {data = {{text = "◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞" , url = 'http://t.me/CR_T2'}}}
+local datar = {data = {{text = "⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧" , url = 'http://t.me/CR_T2'}}}
 for i = 1,10 do
 title = json[i].title
 link = json[i].id
@@ -13375,7 +13375,7 @@ The besT sourCe on TeLeGrAm
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = 'أضـف البـوت الـي مجـموعـتـك ✅', url = 't.me/'..UserBot..'?startgroup=new'},
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''},
 },
 }
 local msgg = msg_id/2097152/0.5
@@ -13410,7 +13410,7 @@ data = {
 {text = 'اوامر القفل', data = msg.sender.user_id..'/NoNextSeting'}, {text = 'اوامر التعطيل', data = msg.sender.user_id..'/listallAddorrem'}, 
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -13439,7 +13439,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -13490,7 +13490,7 @@ data = {
 {text = ' قائمه الاوامر ', data = msg.sender.user_id..'/helpall'},
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -13511,7 +13511,7 @@ data = {
 {text = ' قائمه الاوامر ', data = msg.sender.user_id..'/helpall'},
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -13532,7 +13532,7 @@ data = {
 {text = ' قائمه الاوامر ', data = msg.sender.user_id..'/helpall'},
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -13553,7 +13553,7 @@ data = {
 {text = ' قائمه الاوامر ', data = msg.sender.user_id..'/helpall'},
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -13574,7 +13574,7 @@ data = {
 {text = ' قائمه الاوامر ', data = msg.sender.user_id..'/helpall'},
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -13595,7 +13595,7 @@ data = {
 {text = ' قائمه الاوامر ', data = msg.sender.user_id..'/helpall'},
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -13611,7 +13611,7 @@ data = {
 {text = 'بنك الحظ 🏦', data = msg.sender.user_id..'/bank'}, 
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -16686,7 +16686,7 @@ data = {
 {text = '- اضف البوت لمجموعتك ♡,', url = 't.me/'..UserBot..'?startgroup=new'}, 
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -16702,7 +16702,7 @@ data = {
 {text = '- اضف البوت لمجموعتك ♡,', url = 't.me/'..UserBot..'?startgroup=new'}, 
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -16899,11 +16899,11 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
-return send(msg_chat_id,msg_id,"◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞ » @"..chsource.."","html",true, false, false, true, reply_markup)
+return send(msg_chat_id,msg_id,"⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧ » @"..chsource.."","html",true, false, false, true, reply_markup)
 end
 if text == 'حذف كليشه ستارت ✦' then 
 if not msg.ControllerBot then 
@@ -17530,7 +17530,7 @@ title = 'اضغط هنا لمعرفه كيفيه ارسال الهمسه',
 input_message_content = input_message_content,
 reply_markup = {
 inline_keyboard ={
-{{text ="ch", url= "https://t.me/CR_T2"}},
+{{text ="ch", url= 't.me/'..chsource..''}},
 }
 },
 },
@@ -17546,7 +17546,7 @@ title = "اضغط هنا لمعرفه كيفيه استخدام الترجمه",
 input_message_content = input_message_content,
 reply_markup = {
 inline_keyboard ={
-{{text ="◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞", url= "t.me/"..chsource..""}},
+{{text ="⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧", url= "t.me/"..chsource..""}},
 }
 },
 },
@@ -17565,7 +17565,7 @@ title = br,
 input_message_content = input_message_content,
 reply_markup = {
 inline_keyboard ={
-{{text ="◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞", url= "t.me/"..chsource..""}},
+{{text ="⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧", url= "t.me/"..chsource..""}},
 }
 },
 },
@@ -17584,7 +17584,7 @@ title = br,
 input_message_content = input_message_content,
 reply_markup = {
 inline_keyboard ={
-{{text ="◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞", url= "t.me/"..chsource..""}},
+{{text ="⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧", url= "t.me/"..chsource..""}},
 }
 },
 },
@@ -17968,7 +17968,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -17992,7 +17992,7 @@ if Text and Text:match('(%d+)/cancelkit') then
     type = 'inline',
     data = {
     {
-    {text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+    {text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
     },
     }
     }
@@ -18007,7 +18007,7 @@ if Text and Text:match('(%d+)/cancelkit') then
         type = 'inline',
         data = {
         {
-        {text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+        {text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
         },
         }
         }
@@ -18079,7 +18079,7 @@ local ph = photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id
 pph ={
 type = "photo",
 media = ph,
-caption = '* *•┉ • ┉ • ┉ ┉ • ┉ • ┉ • ┉ • ┉ • ┉•\n*🤖┇[⁨𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘˼⁩](t.me/cr_T2)⦒ ',
+caption = '* *•┉ • ┉ • ┉ ┉ • ┉ • ┉ • ┉ • ┉ • ┉•\n*🤖┇[⁨𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘˼⁩](t.me/sr_telegod)⦒ ',
 parse_mode = "Markdown"                                                                                                                                                               
 }     
 keyboard = {} 
@@ -18122,7 +18122,7 @@ local ph = photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id
 pph ={
 type = "photo",
 media = ph,
-caption = '*  *[ ☃️︙ٱهـــݪٱ بــک في سـۄرس تلي جود](t.me/cr_T2)*\n\n*[ 🎲| من اقـوي سورسات الحمايه بالتليجرام](t.me/cr_t2)*',
+caption = '*  *[ ☃️︙ٱهـــݪٱ بــک في سـۄرس تلي جود](t.me/sr_telegod)*\n\n*[ 🎲| من اقـوي سورسات الحمايه بالتليجرام](t.me/sr_telegod)*',
 parse_mode = "Markdown"                                                                                                                                                               
 }     
 keyboard = {} 
@@ -18140,14 +18140,14 @@ if Redis:get(black..'Set:array'..IdUser..':'..ChatId) == 'true1' then
 Redis:del(black..'Set:array'..IdUser..':'..ChatId)
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞',url='http://t.me/cr_t2'}},
+{{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧',url='http://t.me/'..chsource..''}},
 }
 local msg_idd = Msg_id/2097152/0.5
 return https.request("https://api.telegram.org/bot"..Token..'/editMessageText?chat_id='..ChatId..'&text='..URL.escape(" *✦تم حفظ الردود بنجاح*")..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 else
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞',url='http://t.me/CR_T2'}},
+{{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧',url='http://t.me/'..chsource..''}},
 }
 return https.request("https://api.telegram.org/bot"..Token..'/editMessageText?chat_id='..ChatId..'&text='..URL.escape(" *✦تم تنفيذ الامر سابقا*")..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
@@ -18159,7 +18159,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -18177,7 +18177,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -18226,7 +18226,7 @@ send(Sudo_Id,0,'*\n✦ تم تفعيل مجموعه جديده \n✦من قام 
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url="t.me/CR_T2"},
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url="t.me/'..chsource..'"},
 },
 }
 local txxt = "✦ تم تفعيل المجموعه و ترقيه {"..y.."} ادمنيه \n⌯︙تم ترقية المالك "
@@ -18247,7 +18247,7 @@ data = {
 {text = 'الغاء كتم', data = IdUser..'unmute'..replyy}, 
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -18265,7 +18265,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -18288,7 +18288,7 @@ data = {
 {text = 'الغاء حظر', data = IdUser..'unban'..replyy}, 
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -18307,7 +18307,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -18328,7 +18328,7 @@ data = {
 {text = 'الغاء تقييد', data = IdUser..'unkid'..replyy}, 
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -18346,7 +18346,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -18448,7 +18448,7 @@ data = {
 {text = 'القائمه الرئيسيه', data = IdUser..'/helpall'},
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -18507,7 +18507,7 @@ data = {
 {text = 'القائمه الرئيسيه', data = IdUser..'/helpall'},
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -18554,7 +18554,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -18571,7 +18571,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -18591,7 +18591,7 @@ data = {
 {text = ': رجوع ᥫ᭡', data = IdUser..'/chback'},
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -18611,7 +18611,7 @@ data = {
 {text = ': رجوع ᥫ᭡', data = IdUser..'/chback'},
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -18654,7 +18654,7 @@ data = {
 {text = 'القائمه الرئيسيه', data = IdUser..'/helpall'},
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -18707,7 +18707,7 @@ data = {
 {text = 'القائمه الرئيسيه', data = IdUser..'/helpall'},
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -18747,7 +18747,7 @@ data = {
 {text = 'القائمه الرئيسيه', data = IdUser..'/helpall'},
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -18799,7 +18799,7 @@ data = {
 {text = 'القائمه الرئيسيه', data = IdUser..'/helpall'},
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -18853,7 +18853,7 @@ data = {
 {text = 'القائمه الرئيسيه', data = IdUser..'/helpall'},
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -18894,7 +18894,7 @@ data = {
 {text = 'القائمه الرئيسيه', data = IdUser..'/helpall'},
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -18914,7 +18914,7 @@ data = {
 {text = 'القائمه الرئيسيه', data = IdUser..'/helpall'},
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -18950,7 +18950,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒 𝑡𝑒𝑙𝑒𝑔𝑜𝑑◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
@@ -19009,7 +19009,7 @@ data = {
 {text = 'اوامر القفل', data = IdUser..'/NoNextSeting'}, {text = 'اوامر التعطيل', data = IdUser..'/listallAddorrem'}, 
 },
 {
-{text = '◜𝑠𝑜𝑢𝑟𝑐𝑒◞', url = 't.me/'..chsource..''}, 
+{text = '⟦  𝐒 𝐎 𝐔 𝐑 𝐂 𝐄  ⟧', url = 't.me/'..chsource..''}, 
 },
 }
 }
