@@ -5967,6 +5967,13 @@ LuaTele.setChatMemberStatus(msg.chat_id,Message_Reply.sender.user_id,'banned',0)
 return send(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,"✦ تم حظره من الجروب ").Reply,"md",true)  
 end
 end
+local v = monsha[1]
+local tecxt = ListMembers.."\n✠┊ نداء للمالك {[ > Click < ](tg://user?id="..v..")}"..
+"\n✠┊ المشرف {["..names.." ](tg://user?id="..msg.sender_id.user_id..")}"..
+"\n✠┊ قام بالتكرار في ازاله الاعضاء \n✠┊ لا يمكنني تنزيله من المشرفين"
+send(msg_chat_id,msg_id,tecxt,"md")
+end
+end
 if text == ('الغاء حظر') and msg.reply_to_message_id ~= 0 then
 if not msg.Admin then
 return send(msg_chat_id,msg_id,'\n*✦ هذا الامر يخص  '..Controller_Num(7)..' * ',"md",true)  
@@ -6144,6 +6151,11 @@ LuaTele.setChatMemberStatus(msg.chat_id,Message_Reply.sender.user_id,'banned',0)
 LuaTele.setChatMemberStatus(msg.chat_id,Message_Reply.sender.user_id,'restricted',{1,1,1,1,1,1,1,1,1})
 return send(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,"✦ تم طرده من الجروب ").Reply,"md",true)  
 end
+local tecxt = ListMembers.."\n✠┊ المشرف {["..names.." ](tg://user?id="..msg.sender_id.user_id..")}"..
+"\n✠┊ قام بالتكرار في ازاله الاعضاء \n✠┊ لا يمكنني تنزيله من المشرفين"
+send(msg_chat_id,msg_id,tecxt,"md")
+end
+end
 
 if text and text:match('^حظر عام (%d+)$') then
 local UserId = text:match('^حظر عام (%d+)$')
@@ -6179,6 +6191,12 @@ if text and text:match('^الغاء العام (%d+)$') then
 local UserId = text:match('^الغاء العام (%d+)$')
 if not msg.Devss then
 return send(msg_chat_id,msg_id,'\n*✦ هذا الامر يخص  '..Controller_Num(2)..' * ',"md",true)  
+end
+local tecxt = ListMembers.."\n✠┊ نداء للمالك {[ > Click < ](tg://user?id="..v..")}"..
+"\n✠┊ المشرف {["..names.." ](tg://user?id="..msg.sender_id.user_id..")}"..
+"\n✠┊ هناك عمليه تخريب وطرد الاعضاء , ليست لدي صلاحيه اضافه مشرفين لتنزيله"
+send(msg_chat_id,msg_id,tecxt,"md")
+end
 end
 
 local UserInfo = LuaTele.getUser(UserId)
@@ -6274,6 +6292,13 @@ Redis:sadd(black.."BanGroup:Group"..msg_chat_id,UserId)
 LuaTele.setChatMemberStatus(msg.chat_id,UserId,'banned',0)
 return send(msg_chat_id,msg_id,Reply_Status(UserId,"✦ تم حظره من الجروب ").Reply,"md",true)  
 end
+end
+end
+local v = monsha[1]
+local tecxt = ListMembers.."\n✠┊ نداء للمالك {[ > Click < ](tg://user?id="..v..")}"..
+"\n✠┊ المشرف {["..names.." ](tg://user?id="..msg.sender_id.user_id..")}"..
+"\n✠┊ قام بتكرار طرد الاعضاء وطرد اكثر من 3 وتم تنزيله من المشرفين "
+send(msg_chat_id,msg_id,tecxt,"md")
 end
 end
 if text then
@@ -6438,6 +6463,13 @@ end
 LuaTele.setChatMemberStatus(msg.chat_id,UserId,'banned',0)
 LuaTele.setChatMemberStatus(msg.chat_id,UserId,'restricted',{1,1,1,1,1,1,1,1,1})
 return send(msg_chat_id,msg_id,Reply_Status(UserId,"✦ تم طرده من الجروب ").Reply,"md",true)  
+end
+end
+local v = monsha[1]
+local tecxt = ListMembers.."\n✠┊ نداء للمالك {[ > Click < ](tg://user?id="..v..")}"..
+"\n✠┊ المشرف {["..names.." ](tg://user?id="..msg.sender_id.user_id..")}"..
+"\n✠┊ قام بتكرار طرد الاعضاء وطرد اكثر من 3 وتم تنزيله من المشرفين "
+send(msg_chat_id,msg_id,tecxt,"md")
 end
 end
 if text == "نزلني" then
@@ -6857,6 +6889,45 @@ Redis:set(black.."lockalllll"..msg_chat_id,"off")
 send(msg_chat_id,msg_id,Reply_Status(msg.sender.user_id,"✦ تم قفـل @all هنا").Lock,"md",true)  
 return false
 end 
+if text == "تعطيل منع التصفيه" then
+if ChannelJoinch(msg) == false then
+local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(black..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(black..'Chat:Channel:Join'..msg.chat_id)}, },}}
+return send(msg.chat_id,msg.id,'*\n♢ عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if ChannelJoin(msg) == false then
+local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(black..'Channel:Join:Name'), url = 't.me/'..Redis:get(black..'Channel:Join')}, },}}
+return send(msg.chat_id,msg.id,'*\n♢ عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if not msg.SuperCreator then
+return send(msg_chat_id,msg_id,'\n*♢ هذا الامر يخص { '..Controller_Num(4)..' }* ',"md",true)  
+end
+if Redis:get(black..'spammkick'..msg.chat_id)  then
+return send(msg_chat_id,msg_id,'♢ تم تعطيل منع التصفيه مسبقا\n ✓',"md")
+else
+Redis:set(black.."spammkick"..msg.chat_id,"true")
+return send(msg_chat_id,msg_id,'♢ تم تعطيل منع التصفيه\n ✓',"md")
+end
+end
+if text == "تفعيل منع التصفيه" then
+if ChannelJoinch(msg) == false then
+local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(black..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(black..'Chat:Channel:Join'..msg.chat_id)}, },}}
+return send(msg.chat_id,msg.id,'*\n♢  عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if ChannelJoin(msg) == false then
+local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(black..'Channel:Join:Name'), url = 't.me/'..Redis:get(black..'Channel:Join')}, },}}
+return send(msg.chat_id,msg.id,'*\n♢ عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if not msg.SuperCreator then
+return send(msg_chat_id,msg_id,'\n*♢ هذا الامر يخص { '..Controller_Num(4)..' }* ',"md",true)  
+end
+if not Redis:get(black..'spammkick'..msg.chat_id)  then
+return send(msg_chat_id,msg_id,'♢ تم تفعيل منع التصفيه مسبقا\n ✓',"md")
+else
+Redis:del(black.."spammkick"..msg.chat_id)
+return send(msg_chat_id,msg_id,'♢ تم تفعيل منع التصفيه\n ✓',"md")
+end
+end
+
 if text == "تفعيل all" or text == "تفعيل @all" then 
 if not msg.Manger then
 return send(msg_chat_id,msg_id,'\n*✦ هذا الامر يخص  '..Controller_Num(6)..' * ',"md",true)  
