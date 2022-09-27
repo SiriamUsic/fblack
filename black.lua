@@ -4769,21 +4769,6 @@ type = 'inline',
 data = {{{text = '- مسح المميزين', data = msg.sender.user_id..'/DelSpecial'},},}}
 return send(msg_chat_id, msg_id, ListMembers, 'md', false, false, false, false, reply_markup)
 end
-if text == "ثنائي اليوم" then
-local Info_Members = bot.searchChatMembers(msg.chat_id, "*", 200)
-local List_Members = Info_Members.members
-local NumRand1 = math.random(1, #List_Members); 
-local NumRand2 = math.random(1, #List_Members); 
-local user1 = List_Members[NumRand1].member_id.user_id
-local user2 = List_Members[NumRand2].member_id.user_id
-local UserInfo = bot.getUser(user1)
-local UserInfoo = bot.getUser(user2)
-local listTow = "• ثنائي اليوم : \n ["..FlterBio(UserInfo.first_name).."](tg://user?id="..UserInfo.id..") ~ ["..UserInfoo.first_name.."](tg://user?id="..UserInfoo.id..")\n"
-return send(msg.chat_id,msg.id,listTow,"md",true)  
-end
-
-
-
 -----------تسلية-------
 if text == 'الخولات' then
 if ChannelJoin(msg) == false then
@@ -11930,6 +11915,94 @@ data = {
 }
 LuaTele.sendText(Sudo_Id,0,'*\n✦ مرحباً عزيزي المطور \nشخص ما يحتاج الي مساعده\n•┉ • ┉ • ┉ ┉ • ┉ • ┉ • ┉ • ┉ • ┉•\n✦ *Name* ↫ ❲'..klajq..'❳\n✦ - *User* ↫ ❲@'..bains.username..'❳\n✦ *Id* ↫ ❲'..msg.sender.user_id..'❳\n*',"md",false, false, false, false, reply_markup)
 end
+if text then 
+tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data)
+if data.id_ then 
+if data.id_ ~= bot_id then
+local blackChengName = database:get(bot_id.."black:Cheng:Name"..data.id_)
+if not data.first_name_ then 
+if blackChengName then 
+send(msg.chat_id_, msg.id_, " مش عارف كدا اسمك ماله مش باين 😏 ["..blackChengName..']')
+database:del(bot_id.."black:Cheng:Name"..data.id_) 
+end
+end
+if data.first_name_ then 
+if blackChengName ~= data.first_name_ then 
+local Text = {
+  "في اي يسطا ماله اسمك القديم 😂",
+"هاااا غيرت اسمك لي رجع القديم",
+"اسمك مش عاجبني خليه شبهي ",
+"معرفتكش انا كدا لما غيرت اسمك صح",
+"حلو الاسم الجديد",
+}
+send(msg.chat_id_, msg.id_,Text[math.random(#Text)])
+end  
+database:set(bot_id.."black:Cheng:Name"..data.id_, data.first_name_) 
+end
+end
+end
+end,nil)   
+end
+if text then  
+tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data)
+if data.id_ then 
+if data.id_ ~= bot_id then
+local blackChengUserName = database:get(bot_id.."black:Cheng:UserName"..data.id_)
+if not data.username_ then 
+if blackChengUserName then 
+send(msg.chat_id_, msg.id_, 1, "امسكو مسح اليورر بتاعه 😂😂\nاليوزر القديم  : [@"..blackChengUserName..']')
+database:del(bot_id.."black:Cheng:UserName"..data.id_) 
+end
+end
+if data.username_ then 
+if blackChengUserName ~= data.username_ then 
+local Text = {
+'هاا غيرت اليوزر لي كنت في حفله و مقدرتش ولا اي 😂😂',
+"امسك حرامي غير اليوزر دا الجديد @"..data.username_.."",
+"غيرت اليوزر لي 😐",
+"حرامي غير اليوزر مسكتو \nدا اليوزر : @"..data.username_.."",
+'عيب يسطا لما انت تكون انت و تغير يوزرك 😶',
+'ها مغير اليوزر ', 
+"منور اليوزر الجديد :  "..data.username_.."",
+}
+send(msg.chat_id_, msg.id_,Text[math.random(#Text)])
+end  
+database:set(bot_id.."black:Cheng:UserName"..data.id_, data.username_) 
+end
+end
+end
+end,nil)   
+end
+if text then  
+tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data)
+if data.id_ then 
+if data.id_ ~= bot_id then 
+local blackChengPhoto = database:get(bot_id.."black:Cheng:Photo"..data.id_)
+if not data.profile_photo_ then 
+if blackChengPhoto then 
+send(msg.chat_id_, msg.id_, "امسكو مسح صورو الحيوان 😂😂")
+database:del(bot_id.."black:Cheng:Photo"..data.id_) 
+end
+end
+if data.profile_photo_.big_.persistent_id_ then 
+if blackChengPhoto ~= data.profile_photo_.big_.persistent_id_ then 
+local Text = {
+  "شيل صورتك احسن",
+  "حلوه الصوره دي",
+  "حاتطه صوره وحده احلي منك لي",
+  "مممممممم مغير الصوره لي ",
+  "شكلك مقموص",
+}
+send(msg.chat_id_, msg.id_,Text[math.random(#Text)])
+end  
+database:set(bot_id.."black:Cheng:Photo"..data.id_, data.profile_photo_.big_.persistent_id_) 
+end
+end
+end
+end,nil)  
+end
+]]--
+
 if text == 'حذف حسابي' or text == 'بوت حذف' or text == 'بوت الحذف'  or text == 'رابط الحذف'  then
 photo = "https://t.me/LC6BOT"
 local T =[[
