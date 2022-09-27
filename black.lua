@@ -4781,6 +4781,9 @@ local UserInfoo = bot.getUser(user2)
 local listTow = "• ثنائي اليوم : \n ["..FlterBio(UserInfo.first_name).."](tg://user?id="..UserInfo.id..") ~ ["..UserInfoo.first_name.."](tg://user?id="..UserInfoo.id..")\n"
 return send(msg.chat_id,msg.id,listTow,"md",true)  
 end
+
+
+
 -----------تسلية-------
 if text == 'الخولات' then
 if ChannelJoin(msg) == false then
