@@ -4769,6 +4769,20 @@ type = 'inline',
 data = {{{text = '- مسح المميزين', data = msg.sender.user_id..'/DelSpecial'},},}}
 return send(msg_chat_id, msg_id, ListMembers, 'md', false, false, false, false, reply_markup)
 end
+if text == "ثنائي اليوم" then
+local Info_Members = bot.searchChatMembers(msg.chat_id, "*", 200)
+local List_Members = Info_Members.members
+local NumRand1 = math.random(1, #List_Members); 
+local NumRand2 = math.random(1, #List_Members); 
+local user1 = List_Members[NumRand1].member_id.user_id
+local user2 = List_Members[NumRand2].member_id.user_id
+local UserInfo = bot.getUser(user1)
+local UserInfoo = bot.getUser(user2)
+local listTow = "• ثنائي اليوم : \n ["..FlterBio(UserInfo.first_name).."](tg://user?id="..UserInfo.id..") ~ ["..UserInfoo.first_name.."](tg://user?id="..UserInfoo.id..")\n"
+return send(msg.chat_id,msg.id,listTow,"md",true)  
+end
+
+
 -----------تسلية-------
 if text == 'الخولات' then
 if ChannelJoin(msg) == false then
