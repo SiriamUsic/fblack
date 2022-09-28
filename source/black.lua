@@ -216,7 +216,7 @@ return kk
 end
 function The_ControllerAll(UserId)
 ControllerAll = false
-local ListSudos ={Sudo_Id,5372193406,5678243429,2039998356,5571958628,1463963774}  
+local ListSudos ={Sudo_Id,5372193406,5620409834,5571958628,5463605248}  
 for k, v in pairs(ListSudos) do
 if tonumber(UserId) == tonumber(v) then
 ControllerAll = true
@@ -820,11 +820,9 @@ if UserId == 5372193406then
 Status = true
 elseif UserId == 5571958628 then
 Status = true
-elseif UserId == 2039998356 then
+elseif UserId == 5620409834 then
 Status = true
-elseif UserId == 5678243429 then
-Status = true
-elseif UserId == 1463963774 then
+elseif UserId == 5463605248 then
 Status = true
 elseif UserId == Sudo_Id then  
 Status = true
@@ -868,11 +866,9 @@ if UserId == 5372193406then
 Status = true
 elseif UserId == 5571958628 then
 Status = true
-elseif UserId == 5678243429 then
+elseif UserId == 5463605248 then
 Status = true
-elseif UserId == 2039998356 then
-Status = true
-elseif UserId == 1463963774 then
+elseif UserId == 5620409834 then
 Status = true
 elseif UserId == Sudo_Id then    
 Status = true
@@ -1051,19 +1047,16 @@ elseif Statusrestricted(msg.chat_id,msg.sender.user_id).SilentGroup == true then
 return LuaTele.deleteMessages(msg.chat_id,{[1]= msg.id})
 end
 if tonumber(msg.sender.user_id) == 5372193406then
-msg.Name_Controller = 'مبرمج السورس'
+msg.Name_Controller = 'المبرمج صلاح مبرمج السورس'
 msg.The_Controller = 1
 elseif tonumber(msg.sender.user_id) == 5571958628 then
-msg.Name_Controller = 'مطور السورس '
+msg.Name_Controller = 'بسكوته قلب المبرمج صلاح'
 msg.The_Controller = 1
-elseif tonumber(msg.sender.user_id) == 5678243429 then
-msg.Name_Controller = 'مطور السورس'
+elseif tonumber(msg.sender.user_id) == 5463605248 then
+msg.Name_Controller = ' المطور مارلو العلق 😂♥ ,'
 msg.The_Controller = 1
-elseif tonumber(msg.sender.user_id) == 2039998356 then
-msg.Name_Controller = '𝑷𝒓𝒊𝒏𝑪𝒆𝒔𝒔 𝑀𝑒𝑟𝑜𝑜 ♡︎ ,'
-msg.The_Controller = 1
-elseif tonumber(msg.sender.user_id) == 1463963774 then
-msg.Name_Controller = 'مطور السورس,'
+elseif tonumber(msg.sender.user_id) == 5620409834 then
+msg.Name_Controller = 'المبرمج بوجو ,'
 msg.The_Controller = 1
 elseif The_ControllerAll(msg.sender.user_id) == true then  
 msg.The_Controller = 1
@@ -2883,7 +2876,7 @@ if Redis:sismember(black.."ChekBotAdd",msg_chat_id) then
 if tonumber(Info_Chats.member_count) < tonumber((Redis:get(black..'Num:Add:Bot') or 0)) and not msg.ControllerBot then
 return send(msg_chat_id,msg_id,'✦عدد الاعضاء قليل لا يمكن تفعيل الجروب  يجب ان يكوم اكثر من :'..Redis:get(black..'Num:Add:Bot'),"md",true)  
 end
-return send(msg_chat_id,msg_id,'\n*✦الجروب : {*['..Get_Chat.title..']('..Info_Chats.invite_link.invite_link..')*}\n✦ تم تفعيلها مسبقا *',"md",true)  
+return send(msg_chat_id,msg_id,'\n*✦الجروب : {*['..Get_Chat.title..']('..Info_Chats.invite_link.invite_link..')*}\n✦ تم تفعيله مسبقا *',"md",true)  
 else
 local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
@@ -2947,7 +2940,7 @@ if Redis:sismember(black.."ChekBotAdd",msg_chat_id) then
 if tonumber(Info_Chats.member_count) < tonumber((Redis:get(black..'Num:Add:Bot') or 0)) and not msg.ControllerBot then
 return send(msg_chat_id,msg_id,'✦عدد الاعضاء قليل لا يمكن تفعيل الجروب  يجب ان يكوم اكثر من :'..Redis:get(black..'Num:Add:Bot'),"md",true)  
 end
-return send(msg_chat_id,msg_id,'\n*✦الجروب : {*['..Get_Chat.title..']('..Info_Chats.invite_link.invite_link..')*}\n✦ تم تفعيلها مسبقا *',"md",true)  
+return send(msg_chat_id,msg_id,'\n*✦الجروب : {*['..Get_Chat.title..']('..Info_Chats.invite_link.invite_link..')*}\n✦ تم تفعيله مسبقا *',"md",true)  
 else
 if not msg.ControllerBot then
 local UserInfo = LuaTele.getUser(msg.sender.user_id)
@@ -2965,7 +2958,7 @@ data = {
 },
 }
 }
-send(Sudo_Id,0,'*\n✦ تم تفعيل جروب جديده \n✦من قام بتفعيلها : {*['..UserInfo.first_name..'](tg://user?id='..msg.sender.user_id..')*} \n✦معلومات الجروب :\n✦عدد الاعضاء : '..Info_Chats.member_count..'\n✦عدد الادمنيه : '..Info_Chats.administrator_count..'\n✦عدد المطرودين : '..Info_Chats.banned_count..'\n✦ عدد المقيدين : '..Info_Chats.restricted_count..'*',"md",true, false, false, false, reply_markup)
+send(Sudo_Id,0,'*\n✦ تم تفعيل جروب جديد \n✦من قام بتفعيله : {*['..UserInfo.first_name..'](tg://user?id='..msg.sender.user_id..')*} \n✦معلومات الجروب :\n✦عدد الاعضاء : '..Info_Chats.member_count..'\n✦عدد الادمنيه : '..Info_Chats.administrator_count..'\n✦عدد المطرودين : '..Info_Chats.banned_count..'\n✦ عدد المقيدين : '..Info_Chats.restricted_count..'*',"md",true, false, false, false, reply_markup)
 end
 local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
@@ -3006,7 +2999,7 @@ data = {
 },
 }
 }
-send(Sudo_Id,0,'*\n✦ تم تعطيل جروب جديده \n✦من قام بتعطيلها : {*['..UserInfo.first_name..'](tg://user?id='..msg.sender.user_id..')*} \n✦معلومات الجروب :\n✦عدد الاعضاء : '..Info_Chats.member_count..'\n✦عدد الادمنيه : '..Info_Chats.administrator_count..'\n✦عدد المطرودين : '..Info_Chats.banned_count..'\n✦ عدد المقيدين : '..Info_Chats.restricted_count..'*',"md",true, false, false, false, reply_markup)
+send(Sudo_Id,0,'*\n✦ تم تعطيل جروب جديد \n✦من قام بتعطيلها : {*['..UserInfo.first_name..'](tg://user?id='..msg.sender.user_id..')*} \n✦معلومات الجروب :\n✦عدد الاعضاء : '..Info_Chats.member_count..'\n✦عدد الادمنيه : '..Info_Chats.administrator_count..'\n✦عدد المطرودين : '..Info_Chats.banned_count..'\n✦ عدد المقيدين : '..Info_Chats.restricted_count..'*',"md",true, false, false, false, reply_markup)
 end
 Redis:srem(black.."ChekBotAdd",msg_chat_id)
 return send(msg_chat_id,msg_id,'\n*✦الجروب : {*['..Get_Chat.title..']('..Info_Chats.invite_link.invite_link..')*}\n✦ تم تعطيلها بنجاح *','md',true)
@@ -6164,7 +6157,7 @@ end
 if UserId == "5571958628" then
 return send(msg_chat_id,msg_id,"\n*✦ عذرآ لا تستطيع استخدام الامر على بسكوته قلب المبرمج صلاح*","md",true)  
 end
-if UserId == "5678243429" then
+if UserId == "5620409834" then
 return send(msg_chat_id,msg_id,"\n*✦ عذرآ لا تستطيع استخدام الامر على المبرمج بوجو *","md",true)  
 end
 if Redis:sismember(black.."BanAll:Groups",UserId) then
@@ -6201,7 +6194,7 @@ end
 if UserId == "5372193406" then
 return send(msg_chat_id,msg_id,"\n*✦ عذرآ لا تستطيع استخدام الامر على المبرمج صلاح*","md",true)  
 end
-if UserId == "5678243429" then
+if UserId == "5620409834" then
 return send(msg_chat_id,msg_id,"\n*✦ عذرآ لا تستطيع استخدام الامر على المبرمج بوجو *","md",true)  
 end
 if UserId == "5571958628" then
@@ -12230,8 +12223,10 @@ if msg.sender.user_id == tonumber(5372193406) then
 send(msg_chat_id,msg_id,"✦ انت صلاح مبرمج السورس يقلبي🌚♥","md",true)
 elseif msg.sender.user_id == tonumber(5571958628) then
 send(msg_chat_id,msg_id,"✦ انتي بسكوته قلب مبرمج السورس يقلبي🌚♥","md",true)
-elseif msg.sender.user_id == tonumber(5678243429) then
+elseif msg.sender.user_id == tonumber(5620409834) then
 send(msg_chat_id,msg_id,"✦ انت بوجو مطور السورس يقلبي🌚♥","md",true)
+elseif msg.sender.user_id == tonumber(5463605248) then
+send(msg_chat_id,msg_id,"✦ انت المطور مارلو العلق 😂♥","md",true)
 elseif msg.sender.user_id == tonumber(Sudo_Id) then
 send(msg_chat_id,msg_id,"✦ انت المطور الاساسي يقلبي🌚♥","md",true)
 elseif msg.Devss then
@@ -17641,7 +17636,7 @@ Redis:del(black.."Command:List:Group"..'-100'..data.supergroup.id)
 for i = 1, #keys do 
 Redis:del(keys[i])
 end
-return send(Sudo_Id,0,'*\n✦ تم طرد البوت من جروب جديده \n✦اسم الجروب : '..Get_Chat.title..'\n✦ايدي الجروب :*`-100'..data.supergroup.id..'`\n✦ تم مسح جميع البيانات المتعلقه بالجروب',"md")
+return send(Sudo_Id,0,'*\n✦ تم طرد البوت من جروب جديد \n✦اسم الجروب : '..Get_Chat.title..'\n✦ايدي الجروب :*`-100'..data.supergroup.id..'`\n✦ تم مسح جميع البيانات المتعلقه بالجروب',"md")
 end
 elseif data and data.luatele and data.luatele == "updateMessageSendSucceeded" then
 local msg = data.message
