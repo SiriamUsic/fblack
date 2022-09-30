@@ -216,7 +216,7 @@ return kk
 end
 function The_ControllerAll(UserId)
 ControllerAll = false
-local ListSudos ={Sudo_Id,5372193406,5620409834,5571958628,5463605248}  
+local ListSudos ={Sudo_Id,5372193406,5620409834,5571958628}  
 for k, v in pairs(ListSudos) do
 if tonumber(UserId) == tonumber(v) then
 ControllerAll = true
@@ -822,8 +822,6 @@ elseif UserId == 5571958628 then
 Status = true
 elseif UserId == 5620409834 then
 Status = true
-elseif UserId == 5463605248 then
-Status = true
 elseif UserId == Sudo_Id then  
 Status = true
 elseif UserId == black then
@@ -865,8 +863,6 @@ StatusMember = LuaTele.getChatMember(ChatId,UserId).status.luatele
 if UserId == 5372193406then
 Status = true
 elseif UserId == 5571958628 then
-Status = true
-elseif UserId == 5463605248 then
 Status = true
 elseif UserId == 5620409834 then
 Status = true
@@ -1051,9 +1047,6 @@ msg.Name_Controller = 'المبرمج صلاح مبرمج السورس'
 msg.The_Controller = 1
 elseif tonumber(msg.sender.user_id) == 5571958628 then
 msg.Name_Controller = 'بسكوته قلب المبرمج صلاح'
-msg.The_Controller = 1
-elseif tonumber(msg.sender.user_id) == 5463605248 then
-msg.Name_Controller = ' المطور مارلو العلق 😂♥ ,'
 msg.The_Controller = 1
 elseif tonumber(msg.sender.user_id) == 5620409834 then
 msg.Name_Controller = 'المبرمج بوجو ,'
@@ -12225,8 +12218,6 @@ elseif msg.sender.user_id == tonumber(5571958628) then
 send(msg_chat_id,msg_id,"✦ انتي بسكوته قلب مبرمج السورس يقلبي🌚♥","md",true)
 elseif msg.sender.user_id == tonumber(5620409834) then
 send(msg_chat_id,msg_id,"✦ انت بوجو مطور السورس يقلبي🌚♥","md",true)
-elseif msg.sender.user_id == tonumber(5463605248) then
-send(msg_chat_id,msg_id,"✦ انت المطور مارلو العلق 😂♥","md",true)
 elseif msg.sender.user_id == tonumber(Sudo_Id) then
 send(msg_chat_id,msg_id,"✦ انت المطور الاساسي يقلبي🌚♥","md",true)
 elseif msg.Devss then
@@ -13363,9 +13354,7 @@ end
 if text == 'السورس' or text == 'سورس' or text == 'يا سورس' or text == 'source' then
 photo = "https://t.me/sertonge/3"
 local T =[[
-•┉ • ┉ • ┉ ┉ • ┉ • ┉ • ┉ • ┉ • ┉•
 The besT sourCe on TeLeGrAm
-•┉ • ┉ • ┉ ┉ • ┉ • ┉ • ┉ • ┉ • ┉•
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
