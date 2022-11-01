@@ -17596,7 +17596,7 @@ local CmdStart = '\n※ مرحبا انا بوت '..(Redis:get(Fast.."Name:Bot")
 '\n※ كما احتوي ايضا علي مميزات خدميه'..
 '\n※ للتفعيل اضفني مشرف في مجموعتك'..
 '\n※ وبعدها قم بكتابه كلمه تفعيل'..
-'\n※ لفتح كيبورد الاعضاء: /keb '..''
+'\n※ لفتح كيبورد الاعضاء: /Turbo '..''
 local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {
 {{text = 'مطور البوت', url = 't.me/'..UserSudo}, },
 {{text = 'اضف البوت الى مجموعتك', url = 't.me/'..UserBot..'?startgroup=new'},},}}
@@ -17678,7 +17678,7 @@ local reply_markup = LuaTele.replyMarkup{type = 'keyboard',resize = true,is_pers
 {{text = 'رجوع ※',type = 'text'},},}}
 return LuaTele.sendText(msg_chat_id,msg_id,'※ اهلا بك مجددا عزيزي المطور \n※ اليك الازرار الخاصه ببوتك المثبت علئ لسورس تربو فقط اضغط على الامر الذي تريد تنفيذه', 'md', false, false, false, false, reply_markup)
 end
-if text == '/votlx' or text == '/keb' then
+if text == '/votlx' or text == '/Turbo' then
 Redis:sadd(Fast..'Num:User:Pv',msg.sender.user_id)  
 if not msg.DevelopersQ then
 if not Redis:get(Fast.."Start:Bot") then
