@@ -45,12 +45,12 @@ sudo luarocks install luasocket
 cd ../..
 rm -rf tmp
 unzip luatele.zip
-sudo lua5.3 black.lua
+sudo lua5.3 NASA.lua
 ;;
 2)
 echo -e "\e[1m\e[32mThe bot is running now : جاري تشغيل البوت الان : \e[0m"
 sleep 2
 unzip luatele.zip
-sudo lua5.3 black.lua
+sudo lua5.3 NASA.lua
 ;;
 esac
